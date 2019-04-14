@@ -1,4 +1,7 @@
+import { push } from 'connected-react-router';
 import { REGISTER_REQUEST, REGISTER_SUCCESS, REGISTER_FAILURE } from '../constants/actionTypes';
+
+const AFTER_LOGIN_PATH = '/';
 
 export const register = user => dispatch => {
     dispatch(registerRequest());
@@ -19,7 +22,10 @@ export const register = user => dispatch => {
             return res;
         })
         .then(res => res.json())
-        .then(({ token, user }) => dispatch(registerSuccess(token, user)))
+        .then(({ token, user }) => {
+            dispatch(registerSuccess(token, user));
+            dispatch(push(AFTER_LOGIN_PATH));
+        })
         .catch(e => dispatch(registerFailure(e)));
 }
 
