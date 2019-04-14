@@ -10,6 +10,7 @@ export default function (state = initialState, action) {
         case REGISTER_REQUEST:
             return {
                 ...state,
+                error: null,
                 isLoading: true
             }
         case REGISTER_SUCCESS:

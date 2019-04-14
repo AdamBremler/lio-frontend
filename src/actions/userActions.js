@@ -14,19 +14,21 @@ export const register = user => dispatch => {
         },
         body: JSON.stringify(user)
     })
-        .then(res => {
+        .then(res => res.json()
+            .then(data => ({ res, data }))
+        )
+        .then(({ res, data }) => {
             if (!res.ok) {
-                throw res.statusText;
+                throw data;
             }
 
-            return res;
+            return data;
         })
-        .then(res => res.json())
         .then(({ token, user }) => {
             dispatch(registerSuccess(token, user));
             dispatch(push(AFTER_LOGIN_PATH));
         })
-        .catch(e => dispatch(registerFailure(e)));
+        .catch(e => dispatch(registerFailure(e.msg ? e.msg : 'Could not register')));
 }
 
 const registerRequest = () => ({

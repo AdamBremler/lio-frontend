@@ -7,6 +7,7 @@ function index({ register, isLoading, error }) {
     return (
         <div>
             <RegisterForm onSubmit={register} />
+            {error}
         </div>
     )
 }
