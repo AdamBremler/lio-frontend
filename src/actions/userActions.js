@@ -1,7 +1,8 @@
-import { push } from 'connected-react-router';
-import { REGISTER_REQUEST, REGISTER_SUCCESS, REGISTER_FAILURE } from '../constants/actionTypes';
+import { push, replace } from 'connected-react-router';
+import { REGISTER_REQUEST, REGISTER_SUCCESS, REGISTER_FAILURE, LOGOUT } from '../constants/actionTypes';
 
 const AFTER_LOGIN_PATH = '/';
+const AFTER_LOGOUT_PATH = '/login';
 
 export const register = user => dispatch => {
     dispatch(registerRequest());
@@ -46,4 +47,14 @@ const registerSuccess = (token, user) => ({
 const registerFailure = error => ({
     type: REGISTER_FAILURE,
     payload: { error }
+});
+
+export const logout = () => dispatch => {
+    dispatch(logoutAction());
+
+    dispatch(replace(AFTER_LOGOUT_PATH));
+};
+
+const logoutAction = () => ({
+    type: LOGOUT
 });

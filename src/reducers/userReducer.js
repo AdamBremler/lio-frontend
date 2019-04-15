@@ -1,4 +1,4 @@
-import { REGISTER_SUCCESS } from '../constants/actionTypes';
+import { REGISTER_SUCCESS, LOGOUT } from '../constants/actionTypes';
 
 const initialState = {
     token: null,
@@ -12,7 +12,9 @@ export default function (state = initialState, action) {
                 ...state,
                 token: action.payload.token,
                 user: action.payload.user
-            }
+            };
+        case LOGOUT:
+            return initialState;
         default:
             return state;
     }
