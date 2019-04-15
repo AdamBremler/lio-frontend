@@ -1,8 +1,6 @@
 import { push, replace } from 'connected-react-router';
 import { REGISTER_REQUEST, REGISTER_SUCCESS, REGISTER_FAILURE, LOGOUT } from '../constants/actionTypes';
-
-const AFTER_LOGIN_PATH = '/';
-const AFTER_LOGOUT_PATH = '/login';
+import { AFTER_LOGIN_PATH, AFTER_LOGOUT_PATH } from '../constants/paths';
 
 export const register = user => dispatch => {
     dispatch(registerRequest());
