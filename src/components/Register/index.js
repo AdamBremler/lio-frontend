@@ -1,10 +1,27 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { register } from '../../actions/userActions';
 import RegisterForm from './RegisterForm';
 
-export default function index() {
+function index({ register, isLoading, error }) {
     return (
         <div>
-            <RegisterForm onSubmit={values => console.log(values)} />
+            <RegisterForm onSubmit={register} />
+            {error}
         </div>
     )
 }
+
+const mapStateToProps = state => ({
+    isLoading: state.registration.isLoading,
+    error: state.registration.error
+});
+
+const mapDispatchToProps = dispatch => ({
+    register: user => dispatch(register(user))
+});
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(index);
