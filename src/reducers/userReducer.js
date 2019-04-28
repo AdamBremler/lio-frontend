@@ -1,4 +1,4 @@
-import { REGISTER_SUCCESS, LOGOUT } from '../constants/actionTypes';
+import { LOGIN_SUCCESS, REGISTER_SUCCESS, LOGOUT } from '../constants/actionTypes';
 
 const initialState = {
     token: null,
@@ -7,6 +7,7 @@ const initialState = {
 
 export default function (state = initialState, action) {
     switch (action.type) {
+        case LOGIN_SUCCESS:
         case REGISTER_SUCCESS:
             return {
                 ...state,
