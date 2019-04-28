@@ -1,10 +1,27 @@
 import React from 'react';
-import LoginForm from '../Login/LoginForm'
+import { connect } from 'react-redux';
+import { login } from '../../actions/userActions';
+import LoginForm from './LoginForm';
 
-export default function index() {
+function index({ login, isLoading, error }) {
     return (
         <div>
-            <LoginForm onSubmit={values => console.log(values)} />
+            <LoginForm onSubmit={login} />
+            {error}
         </div>
     )
 }
+
+const mapStateToProps = state => ({
+    isLoading: state.login.isLoading,
+    error: state.login.error
+});
+
+const mapDispatchToProps = dispatch => ({
+    login: user => dispatch(login(user))
+});
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(index);
