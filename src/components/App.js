@@ -1,11 +1,12 @@
 import React from 'react';
-import { Switch } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 import ProtectedRoute from './common/ProtectedRoute';
 import PublicRoute from './common/PublicRoute';
 import Home from './Home';
 import Login from './Login';
 import Register from './Register';
 import Logout from './Logout';
+import Feed from './Feed';
 import Navbar from './Navbar';
 import Footer from './Footer';
 import Profile from './Profile';
@@ -27,15 +28,16 @@ export default function App() {
         <Div>
             < Navbar />
             <Switch>
-                <ProtectedRoute exact path="/" component={Home} />
-                <PublicRoute exact path="/login" component={Login} />
-                <PublicRoute exact path="/register" component={Register} />
-                <ProtectedRoute exact path="/profile/:id" component={ShowProfile} />
-                <ProtectedRoute exact path="/logout" component={Logout} />
-                <ProtectedRoute exact path="/profile" component={Profile} />
-                <ProtectedRoute exact path="/dashboard" component={Dashboard} />
-                <ProtectedRoute exact path="/education" component={Education} />
-                <ProtectedRoute exact path="/experience" component={Experience} />
+                <ProtectedRoute exact path='/' component={Home} />
+                <PublicRoute exact path='/login' component={Login} />
+                <PublicRoute exact path='/register' component={Register} />
+                <ProtectedRoute exact path='/profile/:id' component={ShowProfile} />
+                <ProtectedRoute exact path='/logout' component={Logout} />
+                <ProtectedRoute exact path='/profile' component={Profile} />
+                <ProtectedRoute exact path='/dashboard' component={Dashboard} />
+                <ProtectedRoute exact path='/education' component={Education} />
+                <ProtectedRoute exact path='/experience' component={Experience} />
+                <Route exact path='/feed' component={Feed} />
             </Switch>
             <Footer />
         </Div>
