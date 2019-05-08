@@ -2,6 +2,7 @@ import React from 'react';
 import { Field, reduxForm } from 'redux-form';
 import InputField from '../common/InputField';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom'
 
 const Form = styled.form`
     width: 15%;
@@ -14,9 +15,6 @@ const Div = styled.div`
     flex-grow: 1;
 `;
 
-const Link = styled.a`
-    padding: 10px;
-`;
 
 const validate = values => {
     const errors = {};
@@ -50,8 +48,8 @@ function RegisterForm({ handleSubmit, pristine, reset, submitting }) {
             <Div>
                 <Field name="password" component={InputField} type="password" label="Password" />
             </Div>
-            <button type="submit" disabled={submitting} class="btn btn-primary">Register</button>
-            <Link href="/login">Login</Link>
+            <button type="submit" disabled={submitting} className="btn btn-primary">Register</button>
+            <Link to="/login">Login</Link>
         </Form>
     )
 }
