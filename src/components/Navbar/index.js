@@ -1,12 +1,13 @@
 import React from 'react'
 import styled from 'styled-components';
+import { connect } from 'react-redux';
 import { Link } from 'react-router-dom'
 
 const Div = styled.div`
     flex-shrink: 0;
 `;
 
-export default function index(user) {
+function index({ user }) {
     const notLoggedIn = (
         <div className="navbar-nav">
             <Link className="nav-item nav-link" to="/login">
@@ -42,3 +43,11 @@ export default function index(user) {
         </Div>
     )
 }
+
+const mapStateToProps = state => ({
+    user: state.user.user
+});
+
+export default connect(
+    mapStateToProps
+)(index);

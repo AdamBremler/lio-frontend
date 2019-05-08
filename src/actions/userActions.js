@@ -71,7 +71,6 @@ export const login = user => dispatch => {
         .then(({ token, user }) => {
             dispatch(loginSuccess(token, user));
             dispatch(push(AFTER_LOGIN_PATH));
-            localStorage.setItem('loggedIn', token)
         })
         .catch(e => dispatch(loginFailure(e.msg ? e.msg : 'Could not login')));
 }
@@ -94,7 +93,6 @@ const loginFailure = error => ({
 });
 
 export const logout = () => dispatch => {
-    localStorage.removeItem('loggedIn')
     dispatch(logoutAction());
 
     dispatch(replace(AFTER_LOGOUT_PATH));
