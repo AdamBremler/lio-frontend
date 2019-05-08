@@ -2,13 +2,18 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { login } from '../../actions/userActions';
 import LoginForm from './LoginForm';
+import styled from 'styled-components';
+
+const Div = styled.div`
+    flex-grow: 1;
+`;
 
 function index({ login, isLoading, error }) {
     return (
-        <div>
+        <Div>
             <LoginForm onSubmit={login} />
             {error}
-        </div>
+        </Div>
     )
 }
 

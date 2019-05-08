@@ -2,13 +2,18 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { register } from '../../actions/userActions';
 import RegisterForm from './RegisterForm';
+import styled from 'styled-components';
+
+const Div = styled.div`
+    flex-grow: 1;
+`;
 
 function index({ register, isLoading, error }) {
     return (
-        <div>
+        <Div>
             <RegisterForm onSubmit={register} />
             {error}
-        </div>
+        </Div>
     )
 }
 

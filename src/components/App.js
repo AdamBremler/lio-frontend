@@ -8,6 +8,7 @@ import Register from './Register';
 import Logout from './Logout';
 import Navbar from './Navbar';
 import Footer from './Footer';
+import Profile from './Profile';
 import styled from 'styled-components';
 
 const Div = styled.div`
@@ -25,6 +26,7 @@ export default function App() {
                 <PublicRoute exact path="/login" component={Login} />
                 <PublicRoute exact path="/register" component={Register} />
                 <ProtectedRoute exact path="/logout" component={Logout} />
+                <ProtectedRoute exact path="/profile" component={Profile} />
             </Switch>
             <Footer />
         </Div>

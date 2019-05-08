@@ -11,6 +11,7 @@ const Form = styled.form`
 
 const Div = styled.div`
     margin-bottom: 20px;
+    flex-grow: 1;
 `;
 
 const Link = styled.a`
