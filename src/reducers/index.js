@@ -6,6 +6,7 @@ import login from './loginReducer';
 import profile from './profileReducer';
 import registration from './registrationReducer';
 import feed from './feedReducer';
+import ad from './adReducer';
 
 const rootReducer = history => combineReducers({
     router: connectRouter(history),
@@ -14,7 +15,8 @@ const rootReducer = history => combineReducers({
     login,
     registration,
     profile,
-    feed
+    feed,
+    ad
 });
 
 export default rootReducer;

@@ -7,7 +7,7 @@ export const getFeed = () => (dispatch, getState) => {
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json',
-            'Authorization': getState().user.token
+            'Authorization': `Bearer ${getState().user.token}`
         }
     })
         .then(res => res.json()
