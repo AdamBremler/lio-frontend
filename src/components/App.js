@@ -7,10 +7,18 @@ import Login from './Login';
 import Register from './Register';
 import Logout from './Logout';
 import Navbar from './Navbar';
+import Footer from './Footer';
+import styled from 'styled-components';
+
+const Div = styled.div`
+display: flex;
+min-height: 100vh;
+flex-direction: column;
+`;
 
 export default function App() {
     return (
-        <div>
+        <Div>
             < Navbar />
             <Switch>
                 <ProtectedRoute exact path="/" component={Home} />
@@ -18,6 +26,7 @@ export default function App() {
                 <PublicRoute exact path="/register" component={Register} />
                 <ProtectedRoute exact path="/logout" component={Logout} />
             </Switch>
-        </div>
+            <Footer />
+        </Div>
     );
 }

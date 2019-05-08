@@ -1,4 +1,9 @@
 import React from 'react'
+import styled from 'styled-components';
+
+const Div = styled.div`
+    flex-shrink: 0;
+`;
 
 export default function index() {
     const notLoggedIn = (
@@ -12,13 +17,14 @@ export default function index() {
 
     const loggedIn = (
         <div class="navbar-nav">
+            <a class="nav-item nav-link" href="/profile">Profile</a>
             <a class="nav-item nav-link" href="/logout">
                 Logout
                 </a>
         </div>
     )
     return (
-        <div>
+        <Div>
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
                 <a class="navbar-brand" href="/">LIO</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -27,12 +33,11 @@ export default function index() {
                 <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                     <div class="navbar-nav">
                         <a class="nav-item nav-link active" href="/">Home <span class="sr-only">(current)</span></a>
-                        <a class="nav-item nav-link" href="/profile">Profile</a>
                         <a class="nav-item nav-link" href="/feed">Feed</a>
                         {localStorage.loggedIn ? loggedIn : notLoggedIn}
                     </div>
                 </div>
             </nav>
-        </div>
+        </Div>
     )
 }

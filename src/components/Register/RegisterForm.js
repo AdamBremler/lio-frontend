@@ -1,6 +1,21 @@
 import React from 'react';
 import { Field, reduxForm } from 'redux-form';
 import InputField from '../common/InputField';
+import styled from 'styled-components';
+
+const Form = styled.form`
+    width: 15%;
+    margin: auto;
+    padding-top: 30px;
+`;
+
+const Div = styled.div`
+    margin-bottom: 20px;
+`;
+
+const Link = styled.a`
+    padding: 10px;
+`;
 
 const validate = values => {
     const errors = {};
@@ -24,18 +39,19 @@ const validate = values => {
 
 function RegisterForm({ handleSubmit, pristine, reset, submitting }) {
     return (
-        <form onSubmit={handleSubmit}>
+        <Form onSubmit={handleSubmit}>
             <div>
                 <Field name="email" component={InputField} type="email" label="Email" />
             </div>
             <div>
                 <Field name="name" component={InputField} type="text" label="Name" />
             </div>
-            <div>
+            <Div>
                 <Field name="password" component={InputField} type="password" label="Password" />
-            </div>
-            <button type="submit" disabled={submitting}>Register</button>
-        </form>
+            </Div>
+            <button type="submit" disabled={submitting} class="btn btn-primary">Register</button>
+            <Link href="/login">Login</Link>
+        </Form>
     )
 }
 
