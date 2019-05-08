@@ -6,10 +6,12 @@ import Home from './Home';
 import Login from './Login';
 import Register from './Register';
 import Logout from './Logout';
+import Navbar from './Navbar';
 
 export default function App() {
     return (
         <div>
+            < Navbar />
             <Switch>
                 <ProtectedRoute exact path="/" component={Home} />
                 <PublicRoute exact path="/login" component={Login} />

@@ -28,6 +28,7 @@ function LoginForm({ handleSubmit, pristine, reset, submitting }) {
                 <Field name="password" component={InputField} type="password" label="Password" />
             </div>
             <button type="submit" disabled={submitting}>Login</button>
+            <a href="/register">Register</a>
         </form>
     )
 }
