@@ -10,6 +10,7 @@ import Navbar from './Navbar';
 import Footer from './Footer';
 import Profile from './Profile';
 import styled from 'styled-components';
+import Dashboard from './Dashboard';
 
 const Div = styled.div`
 display: flex;
@@ -27,6 +28,7 @@ export default function App() {
                 <PublicRoute exact path="/register" component={Register} />
                 <ProtectedRoute exact path="/logout" component={Logout} />
                 <ProtectedRoute exact path="/profile" component={Profile} />
+                <ProtectedRoute exact path="/dashboard" component={Dashboard} />
             </Switch>
             <Footer />
         </Div>
