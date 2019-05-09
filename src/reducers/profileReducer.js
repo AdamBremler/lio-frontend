@@ -1,7 +1,7 @@
 import { GET_PROFILE, PROFILE_FAILURE } from "../constants/actionTypes";
 
 const initialState = {
-    profile: null, //The current profile when logging in
+    profile: null,
     isLoading: false,
     error: null
 }
