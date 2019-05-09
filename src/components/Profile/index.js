@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 import styled from 'styled-components';
 
 const Div = styled.div`
@@ -8,9 +8,7 @@ const Div = styled.div`
 export default function index() {
     return (
         <Div>
-            <h1>Home</h1>
-            <h4>Carousel Here ?</h4>
-            <h4>Some info about the company here ?</h4>
+            <h2>Profile</h2>
         </Div>
     )
 }

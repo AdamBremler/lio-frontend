@@ -1,6 +1,19 @@
 import React from 'react';
 import { Field, reduxForm } from 'redux-form';
-import InputField from '../common/InputField';
+import InputField from '../common/InputField'
+import styled from 'styled-components';
+import { Link } from 'react-router-dom'
+
+const Form = styled.form`
+    width: 15%;
+    margin: auto;
+    padding-top: 30px;
+`;
+
+const Div = styled.div`
+    margin-bottom: 20px;
+`;
+
 
 const validate = values => {
     const errors = {};
@@ -20,15 +33,16 @@ const validate = values => {
 
 function LoginForm({ handleSubmit, pristine, reset, submitting }) {
     return (
-        <form onSubmit={handleSubmit}>
-            <div>
+        <Form onSubmit={handleSubmit}>
+            <div className="form-group">
                 <Field name="email" component={InputField} type="email" label="Email" />
             </div>
-            <div>
+            <Div>
                 <Field name="password" component={InputField} type="password" label="Password" />
-            </div>
-            <button type="submit" disabled={submitting}>Login</button>
-        </form>
+            </Div>
+            <button type="submit" className="btn btn-primary" disabled={submitting}>Login</button>
+            <Link to="/register">Register</Link>
+        </Form>
     )
 }
 
