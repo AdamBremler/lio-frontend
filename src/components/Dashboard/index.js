@@ -1,21 +1,25 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React, { useEffect } from 'react'
 import styled from 'styled-components';
-
+import { connect } from 'react-redux';
+import { getProfile } from '../../actions/profileActions';
 const Div = styled.div`
         flex-grow: 1;
 `;
 
-const index = props => {
+const index = ({ getProfile, user, profile }) => {
+    useEffect(() => {
+        getProfile();
+    }, [])
     return (
         <Div>
-            Dashboard
-    </Div>
+            <h1>Dashboard</h1>
+        </Div>
     )
 }
 
-index.propTypes = {
+const mapStateToProps = state => ({
+    user: state.user,
+    profile: state.profile
+})
 
-}
-
-export default index
+export default connect(mapStateToProps, { getProfile })(index)

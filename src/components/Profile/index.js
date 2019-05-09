@@ -1,12 +1,17 @@
-import React from 'react'
 import styled from 'styled-components';
 import { Link } from 'react-router-dom'
+import React, { useEffect } from 'react'
+import { connect } from 'react-redux';
+import { getProfile } from '../../actions/profileActions';
 
 const Div = styled.div`
         flex-grow: 1;
 `;
 
-export default function index() {
+const index = ({ getProfile, user, profile }) => {
+    useEffect(() => {
+        getProfile();
+    }, [])
     return (
         <Div>
             <h2>Profile</h2>
@@ -14,3 +19,10 @@ export default function index() {
         </Div>
     )
 }
+
+const mapStateToProps = state => ({
+    user: state.user,
+    profile: state.profile
+})
+
+export default connect(mapStateToProps, { getProfile })(index)

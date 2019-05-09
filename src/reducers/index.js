@@ -3,6 +3,7 @@ import { reducer as form } from 'redux-form';
 import { connectRouter } from 'connected-react-router';
 import user from './userReducer';
 import login from './loginReducer';
+import profile from './profileReducer';
 import registration from './registrationReducer';
 
 const rootReducer = history => combineReducers({
@@ -10,7 +11,8 @@ const rootReducer = history => combineReducers({
     form,
     user,
     login,
-    registration
+    registration,
+    profile
 });
 
 export default rootReducer;
