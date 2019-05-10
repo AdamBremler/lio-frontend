@@ -12,7 +12,6 @@ const index = ({ getProfile, user: { user }, profile: { profile } }) => {
     useEffect(() => {
         getProfile();
     }, [])
-    console.log(profile)
     return (
         <Div>
             <h2>Profile</h2>
@@ -22,9 +21,12 @@ const index = ({ getProfile, user: { user }, profile: { profile } }) => {
             <p>Description: {profile.description}</p>
             <p>Status: {profile.status}</p>
             <p>Type: {profile.type}</p>
+            <p>Skills: {profile.skills}</p>
             <p>Website: {profile.website}</p>
             <p>Registration Date: {profile.date}</p>
             <Link to="/dashboard">Edit your profile</Link>
+            <Link to="/education">Add education</Link>
+            <Link to="/experience">Add experience</Link>
         </Div>
     )
 }

@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import styled from 'styled-components';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { getProfile, saveProfile } from '../../actions/profileActions';
+import { getProfile, saveProfile } from '../../../actions/profileActions';
 
 const Div = styled.div`
 flex-grow: 1;
@@ -18,9 +18,10 @@ const index = ({ getProfile, saveProfile, profile }) => {
         status: '',
         type: '',
         website: '',
+        skills: '',
     })
     console.log(profile)
-    const { location, description, status, type, website } = formData
+    const { location, description, status, type, website, skills } = formData
 
     const onChange = e => {
         console.log(e.target.value)
@@ -61,6 +62,12 @@ const index = ({ getProfile, saveProfile, profile }) => {
                     <label>Type: </label>
                     <br />
                     <Input type="text" name="type" placeholder="Are you a student or looking for a job?" required value={type} onChange={e => onChange(e)} />
+                </div>
+
+                <div>
+                    <label>Skills: </label>
+                    <br />
+                    <Input type="text" name="skills" placeholder="Main skills e.g: Developer, Javascript, Frontend.." required value={skills} onChange={e => onChange(e)} />
                 </div>
 
                 <div>

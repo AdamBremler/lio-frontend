@@ -10,7 +10,10 @@ import Navbar from './Navbar';
 import Footer from './Footer';
 import Profile from './Profile';
 import styled from 'styled-components';
-import Dashboard from './Dashboard';
+import Dashboard from './Profile/Dashboard';
+import Education from './Profile/Education';
+import Experience from './Profile/Experience';
+
 
 const Div = styled.div`
 display: flex;
@@ -29,6 +32,8 @@ export default function App() {
                 <ProtectedRoute exact path="/logout" component={Logout} />
                 <ProtectedRoute exact path="/profile" component={Profile} />
                 <ProtectedRoute exact path="/dashboard" component={Dashboard} />
+                <ProtectedRoute exact path="/education" component={Education} />
+                <ProtectedRoute exact path="/experience" component={Experience} />
             </Switch>
             <Footer />
         </Div>
