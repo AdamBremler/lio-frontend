@@ -1,7 +1,7 @@
 import { GET_PROFILE, PROFILE_FAILURE } from "../constants/actionTypes";
 
 const initialState = {
-    profile: null,
+    profile: [],
     isLoading: false,
     error: null
 }

@@ -9,11 +9,10 @@ const Div = styled.div`
 `;
 
 const index = ({ getProfile, user: { user }, profile: { profile } }) => {
-    console.log()
-    console.log(user)
     useEffect(() => {
         getProfile();
     }, [])
+    console.log(profile)
     return (
         <Div>
             <h2>Profile</h2>
@@ -23,7 +22,7 @@ const index = ({ getProfile, user: { user }, profile: { profile } }) => {
             <p>Description: {profile.description}</p>
             <p>Status: {profile.status}</p>
             <p>Type: {profile.type}</p>
-            <p>Website: <Link to={profile.website}>{profile.website}</Link></p>
+            <p>Website: {profile.website}</p>
             <p>Registration Date: {profile.date}</p>
             <Link to="/dashboard">Edit your profile</Link>
         </Div>
