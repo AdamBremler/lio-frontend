@@ -11,17 +11,17 @@ const Input = styled.input`
 width: 40%;
 `
 
-const index = ({ getProfile, saveProfile, profile }) => {
+const index = ({ getProfile, saveProfile, profile: { profile } }) => {
     const [formData, setFormData] = useState({
-        location: '',
-        firstname: '',
-        surname: '',
-        picture: '',
-        description: '',
-        status: '',
-        type: '',
-        website: '',
-        skills: '',
+        firstname: !profile.firstname ? '' : profile.firstname,
+        location: !profile.location ? '' : profile.location,
+        surname: !profile.surname ? '' : profile.surname,
+        picture: !profile.picture ? '' : profile.picture,
+        description: !profile.description ? '' : profile.description,
+        status: !profile.status ? '' : profile.status,
+        type: !profile.type ? '' : profile.type,
+        website: !profile.website ? '' : profile.website,
+        skills: !profile.skills ? '' : profile.skills,
     })
     console.log(profile)
     const { firstname, surname, picture, location, description, status, type, website, skills } = formData
@@ -38,6 +38,8 @@ const index = ({ getProfile, saveProfile, profile }) => {
 
     useEffect(() => {
         getProfile();
+
+
     }, [])
     return (
         <Div>
@@ -46,52 +48,52 @@ const index = ({ getProfile, saveProfile, profile }) => {
                 <div>
                     <label>First name: </label>
                     <br />
-                    <Input type="text" name="firstname" placeholder="First name" required value={firstname} onChange={e => onChange(e)} />
+                    <Input type="text" name="firstname" placeholder="First name" value={firstname} onChange={e => onChange(e)} />
                 </div>
                 <div>
                     <label>Last name: </label>
                     <br />
-                    <Input type="text" name="surname" placeholder="Last name" required value={surname} onChange={e => onChange(e)} />
+                    <Input type="text" name="surname" placeholder="Last name" value={surname} onChange={e => onChange(e)} />
                 </div>
                 <div>
                     <label>Location: </label>
                     <br />
-                    <Input type="text" name="picture" placeholder="Photo URL, e.g: wwww.myphoto.com" required value={picture} onChange={e => onChange(e)} />
+                    <Input type="text" name="picture" placeholder="Photo URL, e.g: wwww.myphoto.com" value={picture} onChange={e => onChange(e)} />
                 </div>
                 <div>
                     <label>Location: </label>
                     <br />
-                    <Input type="text" name="location" placeholder="City" required value={location} onChange={e => onChange(e)} />
+                    <Input type="text" name="location" placeholder="City" value={location} onChange={e => onChange(e)} />
                 </div>
 
                 <div>
                     <label>Description: </label>
                     <br />
-                    <Input type="text" name="description" placeholder="Some bio about yourself" required value={description} onChange={e => onChange(e)} />
+                    <Input type="text" name="description" placeholder="Some bio about yourself" value={description} onChange={e => onChange(e)} />
                 </div>
 
                 <div>
                     <label>Status: </label>
                     <br />
-                    <Input type="text" name="status" placeholder="Current status" required value={status} onChange={e => onChange(e)} />
+                    <Input type="text" name="status" placeholder="Current status" value={status} onChange={e => onChange(e)} />
                 </div>
 
                 <div>
                     <label>Type: </label>
                     <br />
-                    <Input type="text" name="type" placeholder="Are you a student or looking for a job?" required value={type} onChange={e => onChange(e)} />
+                    <Input type="text" name="type" placeholder="Are you a student or looking for a job?" value={type} onChange={e => onChange(e)} />
                 </div>
 
                 <div>
                     <label>Skills: </label>
                     <br />
-                    <Input type="text" name="skills" placeholder="Main skills e.g: Developer, Javascript, Frontend.." required value={skills} onChange={e => onChange(e)} />
+                    <Input type="text" name="skills" placeholder="Main skills e.g: Developer, Javascript, Frontend.." value={skills} onChange={e => onChange(e)} />
                 </div>
 
                 <div>
                     <label>Website: </label>
                     <br />
-                    <Input type="text" name="website" placeholder="Website, linkedin etc" required value={website} onChange={e => onChange(e)} />
+                    <Input type="text" name="website" placeholder="Website, linkedin etc" value={website} onChange={e => onChange(e)} />
                 </div>
                 <button type="submit">Save Changes</button>
                 <Link to="/profile">Back to profile</Link>

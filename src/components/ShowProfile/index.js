@@ -7,7 +7,7 @@ const Div = styled.div`
         flex-grow: 1;
 `;
 
-const index = ({ getProfilebyId, profile: { profile, user }, match, user: { loggedinUser } }) => {
+const index = ({ getProfilebyId, profile, match, user }) => {
     useEffect(() => {
         getProfilebyId(match.params.id)
     }, [getProfilebyId])
@@ -15,7 +15,7 @@ const index = ({ getProfilebyId, profile: { profile, user }, match, user: { logg
     return (
         <Div>
             <p>Name: {profile.firstname} {profile.surname}</p>
-            <p>{profile.picture}</p>
+            <img src={profile.picture} alt="selfie" />
             <p>Status: {profile.status}</p>
             <p>Location: {profile.location}</p>
             <p>Bio: {profile.description}</p>
@@ -31,8 +31,8 @@ index.propTypes = {
 
 const mapStateToProps = state => {
     return {
-        profile: state.profile,
-        user: state.user,
+        profile: state.profile.profile,
+        user: state.user.user,
     }
 }
 

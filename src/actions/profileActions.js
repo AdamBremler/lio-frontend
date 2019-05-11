@@ -21,7 +21,7 @@ export const getProfile = () => async (dispatch, getState) => {
 }
 
 //Send formdata to API. TODO: Fix so that the token gets sent so we can use our auth middleware in the backend instead of sending user id params.
-export const saveProfile = (formData, history) => (dispatch, getState) => {
+export const saveProfile = (formData) => (dispatch, getState) => {
     try {
         // const token = getState().user.token
         // const headers = {
