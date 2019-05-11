@@ -1,17 +1,22 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom'
-import React from 'react'
+import React, { useEffect } from 'react'
 import { connect } from 'react-redux';
+import { getProfile } from '../../actions/profileActions';
 
 const Div = styled.div`
         flex-grow: 1;
 `;
 
-const index = ({ user: { user } }) => {
+const index = ({ getProfile, user, profile }) => {
+    useEffect(() => {
+        getProfile();
+    }, [])
+    console.log(profile)
     return (
         <Div>
             <br />
-            <h4>Welcome {user.name}!</h4>
+            <h4>Welcome {profile.firstname}!</h4>
             <br />
             <Link to="/dashboard">Edit profile</Link>
             <br />
@@ -24,10 +29,12 @@ const index = ({ user: { user } }) => {
     )
 }
 
+
 const mapStateToProps = state => {
     return {
-        user: state.user,
+        profile: state.profile.profile,
+        user: state.user.user,
     }
 }
 
-export default connect(mapStateToProps)(index)
+export default connect(mapStateToProps, { getProfile })(index)

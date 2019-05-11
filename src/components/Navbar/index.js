@@ -7,7 +7,7 @@ const Div = styled.div`
     flex-shrink: 0;
 `;
 
-function index({ user }) {
+function index({ user, profile }) {
     const notLoggedIn = (
         <div className="navbar-nav">
             <Link className="nav-item nav-link" to="/login">
@@ -23,6 +23,7 @@ function index({ user }) {
             <Link className="nav-item nav-link" to="/logout">
                 Logout
                 </Link>
+            Signed in as {profile.firstname}
         </div>
     )
     return (
@@ -45,7 +46,8 @@ function index({ user }) {
 }
 
 const mapStateToProps = state => ({
-    user: state.user.user
+    user: state.user.user,
+    profile: state.profile.profile
 });
 
 export default connect(

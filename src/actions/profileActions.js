@@ -1,10 +1,19 @@
 import { GET_PROFILE, PROFILE_FAILURE } from '../constants/actionTypes';
 import Axios from 'axios';
 
-//Get current profile
-export const getProfile = (id) => async (dispatch) => {
+//Get current profile by ID
+export const getProfilebyId = (id) => async (dispatch) => {
     try {
         const res = await Axios.get(`${process.env.REACT_APP_API_URL}/profile/user/${id}`)
+        dispatch({ type: GET_PROFILE, payload: res.data })
+    } catch (error) {
+        dispatch({ type: PROFILE_FAILURE, payload: { msg: error.response.statusText } })
+    }
+}
+//Get profile
+export const getProfile = () => async (dispatch, getState) => {
+    try {
+        const res = await Axios.get(`${process.env.REACT_APP_API_URL}/profile/user/${getState().user.user.id}`)
         dispatch({ type: GET_PROFILE, payload: res.data })
     } catch (error) {
         dispatch({ type: PROFILE_FAILURE, payload: { msg: error.response.statusText } })

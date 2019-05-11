@@ -1,16 +1,16 @@
 import styled from 'styled-components';
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux';
-import { getProfile } from '../../actions/profileActions';
+import { getProfilebyId } from '../../actions/profileActions';
 
 const Div = styled.div`
         flex-grow: 1;
 `;
 
-const index = ({ getProfile, profile: { profile, user }, match, user: { loggedinUser } }) => {
+const index = ({ getProfilebyId, profile: { profile, user }, match, user: { loggedinUser } }) => {
     useEffect(() => {
-        getProfile(match.params.id)
-    }, [getProfile])
+        getProfilebyId(match.params.id)
+    }, [getProfilebyId])
     console.log(profile)
     return (
         <Div>
@@ -36,4 +36,4 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps, { getProfile })(index)
+export default connect(mapStateToProps, { getProfilebyId })(index)
