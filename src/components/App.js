@@ -13,6 +13,7 @@ import styled from 'styled-components';
 import Dashboard from './Profile/Dashboard';
 import Education from './Profile/Education';
 import Experience from './Profile/Experience';
+import ShowProfile from './ShowProfile';
 
 
 const Div = styled.div`
@@ -29,6 +30,7 @@ export default function App() {
                 <ProtectedRoute exact path="/" component={Home} />
                 <PublicRoute exact path="/login" component={Login} />
                 <PublicRoute exact path="/register" component={Register} />
+                <ProtectedRoute exact path="/profile/:id" component={ShowProfile} />
                 <ProtectedRoute exact path="/logout" component={Logout} />
                 <ProtectedRoute exact path="/profile" component={Profile} />
                 <ProtectedRoute exact path="/dashboard" component={Dashboard} />

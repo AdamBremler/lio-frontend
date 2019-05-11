@@ -14,6 +14,9 @@ width: 40%;
 const index = ({ getProfile, saveProfile, profile }) => {
     const [formData, setFormData] = useState({
         location: '',
+        firstname: '',
+        surname: '',
+        picture: '',
         description: '',
         status: '',
         type: '',
@@ -21,7 +24,7 @@ const index = ({ getProfile, saveProfile, profile }) => {
         skills: '',
     })
     console.log(profile)
-    const { location, description, status, type, website, skills } = formData
+    const { firstname, surname, picture, location, description, status, type, website, skills } = formData
 
     const onChange = e => {
         console.log(e.target.value)
@@ -40,6 +43,21 @@ const index = ({ getProfile, saveProfile, profile }) => {
         <Div>
             <h3>Edit Profile</h3>
             <form onSubmit={e => onSubmit(e)}>
+                <div>
+                    <label>First name: </label>
+                    <br />
+                    <Input type="text" name="firstname" placeholder="First name" required value={firstname} onChange={e => onChange(e)} />
+                </div>
+                <div>
+                    <label>Last name: </label>
+                    <br />
+                    <Input type="text" name="surname" placeholder="Last name" required value={surname} onChange={e => onChange(e)} />
+                </div>
+                <div>
+                    <label>Location: </label>
+                    <br />
+                    <Input type="text" name="picture" placeholder="Photo URL, e.g: wwww.myphoto.com" required value={picture} onChange={e => onChange(e)} />
+                </div>
                 <div>
                     <label>Location: </label>
                     <br />

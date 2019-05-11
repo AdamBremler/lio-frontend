@@ -1,41 +1,33 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom'
-import React, { useEffect } from 'react'
+import React from 'react'
 import { connect } from 'react-redux';
-import { getProfile } from '../../actions/profileActions';
 
 const Div = styled.div`
         flex-grow: 1;
 `;
 
-const index = ({ getProfile, user: { user }, profile: { profile } }) => {
-    useEffect(() => {
-        getProfile();
-    }, [])
+const index = ({ user: { user } }) => {
     return (
         <Div>
-            <h2>Profile</h2>
             <br />
             <h4>Welcome {user.name}!</h4>
-            <p>Location: {profile.location}</p>
-            <p>Description: {profile.description}</p>
-            <p>Status: {profile.status}</p>
-            <p>Type: {profile.type}</p>
-            <p>Skills: {profile.skills}</p>
-            <p>Website: {profile.website}</p>
-            <p>Registration Date: {profile.date}</p>
-            <Link to="/dashboard">Edit your profile</Link>
+            <br />
+            <Link to="/dashboard">Edit profile</Link>
+            <br />
             <Link to="/education">Add education</Link>
+            <br />
             <Link to="/experience">Add experience</Link>
+            <br />
+            <Link to={`/profile/${user.id}`}>View profile</Link>
         </Div>
     )
 }
 
 const mapStateToProps = state => {
     return {
-        profile: state.profile,
         user: state.user,
     }
 }
 
-export default connect(mapStateToProps, { getProfile })(index)
+export default connect(mapStateToProps)(index)
