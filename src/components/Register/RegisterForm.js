@@ -2,7 +2,9 @@ import React from 'react';
 import { Field, reduxForm } from 'redux-form';
 import InputField from '../common/InputField';
 import styled from 'styled-components';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
+import SelectField from '../common/SelectField';
+import userTypes from '../../constants/userTypes';
 
 const Form = styled.form`
     width: 15%;
@@ -15,18 +17,25 @@ const Div = styled.div`
     flex-grow: 1;
 `;
 
-
 const validate = values => {
     const errors = {};
 
     if (!values.email) {
-        errors.email = 'Required'
+        errors.email = 'Required';
     } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
-        errors.email = 'Invalid email address'
+        errors.email = 'Invalid email address';
     }
 
     if (!values.password) {
-        errors.password = 'Required'
+        errors.password = 'Required';
+    }
+
+    if (!values.name) {
+        errors.name = 'Required';
+    }
+
+    if (!values.type) {
+        errors.type = 'Required';
     }
 
     return errors;
@@ -37,6 +46,12 @@ function RegisterForm({ handleSubmit, pristine, reset, submitting }) {
         <Form onSubmit={handleSubmit}>
             <div>
                 <Field name="email" component={InputField} type="email" label="Email" />
+            </div>
+            <div>
+                <Field name="name" component={InputField} type="text" label="Name" />
+            </div>
+            <div>
+                <Field name="type" component={SelectField} type="text" label="Type" data={userTypes} />
             </div>
             <Div>
                 <Field name="password" component={InputField} type="password" label="Password" />
