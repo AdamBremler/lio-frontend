@@ -9,6 +9,10 @@ import './index.css';
 import App from './components/App';
 import * as serviceWorker from './serviceWorker';
 
+import { initAxios } from './helpers/lioAxiosInstance';
+
+initAxios(store);
+
 ReactDOM.render(
     <Provider store={store}>
         <ConnectedRouter history={history}>

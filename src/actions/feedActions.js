@@ -1,29 +1,20 @@
+import axios from '../helpers/lioAxiosInstance';
 import { GET_FEED_REQUEST, GET_FEED_SUCCESS, GET_FEED_FAILURE } from '../constants/actionTypes';
 
-export const getFeed = () => (dispatch, getState) => {
+export const getFeed = () => async (dispatch, getState) => {
     dispatch(getFeedRequest());
 
-    fetch(`${process.env.REACT_APP_API_URL}/feed`, {
-        headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${getState().user.token}`
-        }
-    })
-        .then(res => res.json()
-            .then(data => ({ res, data }))
-        )
-        .then(({ res, data }) => {
-            if (!res.ok) {
-                throw data;
+    try {
+        const { data } = await axios.get('/feed', {
+            headers: {
+                'Authorization': `Bearer ${getState().user.token}`
             }
+        });
 
-            return data;
-        })
-        .then(feed => {
-            dispatch(getFeedSuccess(feed));
-        })
-        .catch(e => dispatch(getFeedFailure(e.msg ? e.msg : 'Could not load feed')));
+        dispatch(getFeedSuccess(data));
+    } catch (e) {
+        dispatch(getFeedFailure(e.response ? e.response.data.msg : 'Could not load feed'));
+    }
 }
 
 const getFeedRequest = () => ({
