@@ -1,6 +1,7 @@
 import React from 'react';
 import { Field, reduxForm } from 'redux-form';
 import InputField from '../common/InputField';
+import TextareaField from '../common/TextareaField';
 import DateTimePicker from '../common/DateTimePicker';
 import SkillSelectField from '../common/SkillSelectField';
 
@@ -34,7 +35,7 @@ function CreateAdForm({ handleSubmit, pristine, reset, submitting }) {
     return (
         <form onSubmit={handleSubmit}>
             <Field name='title' component={InputField} type='text' label='Title' />
-            <Field name='description' component={InputField} type='text' label='Description' />
+            <Field name='description' component={TextareaField} type='text' label='Description' />
             <SkillSelectField />
             <Field name='location' component={InputField} type='text' label='Location' />
             <Field name='endDate' component={DateTimePicker} type='text' label='Last date available' />
