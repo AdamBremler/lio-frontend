@@ -11,18 +11,29 @@ function index({ feed, isLoading, error, user, getFeed, postAd }) {
 
     return (
         <div>
-            {user ? <CreateAdForm onSubmit={postAd} /> : null}
-            <div>
-                {feed ? feed.profiles.map(i =>
-                    <div key={i._id}>
-                        <h2>{i.user.name}</h2>
-                        <p>
-                            {i.type}
-                            {i.skills}
-                        </p>
-                    </div>
-                ) : null}
-            </div>
+            {user && user.type === 'Company' ? <CreateAdForm onSubmit={postAd} /> : null}
+            {feed ? (
+                <div>
+                    {feed.profiles ? feed.profiles.map(p =>
+                        <div key={p._id}>
+                            <h2>{p.user.name}</h2>
+                            <p>
+                                {p.type}
+                                {p.skills}
+                            </p>
+                        </div>
+                    ) : null}
+                    {feed.ads ? feed.ads.map(a =>
+                        <div key={a._id}>
+                            <h2>{a.title}</h2>
+                            <p>
+                                {a.description}
+                                {a.skills}
+                            </p>
+                        </div>
+                    ) : null}
+                </div>
+            ) : null}
         </div>
     )
 }

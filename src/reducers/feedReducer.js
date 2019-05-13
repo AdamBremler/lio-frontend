@@ -3,10 +3,7 @@ import { GET_FEED_REQUEST, GET_FEED_SUCCESS, GET_FEED_FAILURE } from '../constan
 const initialState = {
     isLoading: false,
     error: null,
-    feed: {
-        profiles: [],
-        ads: []
-    }
+    feed: null
 };
 
 export default function (state = initialState, action) {
