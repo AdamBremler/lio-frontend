@@ -2,6 +2,7 @@ import React from 'react';
 import { Field, reduxForm } from 'redux-form';
 import InputField from '../common/InputField';
 import DateTimePicker from '../common/DateTimePicker';
+import SkillSelectField from '../common/SkillSelectField';
 
 const validate = values => {
     const errors = {};
@@ -32,21 +33,11 @@ const validate = values => {
 function CreateAdForm({ handleSubmit, pristine, reset, submitting }) {
     return (
         <form onSubmit={handleSubmit}>
-            <div>
-                <Field name='title' component={InputField} type='text' label='Title' />
-            </div>
-            <div>
-                <Field name='description' component={InputField} type='text' label='Description' />
-            </div>
-            <div>
-                <Field name='skills' component={InputField} type='text' label='Skills' />
-            </div>
-            <div>
-                <Field name='location' component={InputField} type='text' label='Location' />
-            </div>
-            <div>
-                <Field name='endDate' component={DateTimePicker} type='text' label='End date for this ad' />
-            </div>
+            <Field name='title' component={InputField} type='text' label='Title' />
+            <Field name='description' component={InputField} type='text' label='Description' />
+            <SkillSelectField />
+            <Field name='location' component={InputField} type='text' label='Location' />
+            <Field name='endDate' component={DateTimePicker} type='text' label='Last date available' />
             <button type='submit' disabled={submitting}>Submit ad</button>
         </form>
     )
