@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { getProfilebyId } from '../../actions/profileActions';
 import Experience from './Experience';
 import Education from './Education';
-import Div from '../Profile/styled/Div';
+import Wrapper from './styled/Wrapper';
 import BottomContainer from './styled/BottomContainer';
 import Picture from '../Profile/styled/Picture';
 import Paragraph from './styled/Paragraph';
@@ -14,7 +14,7 @@ const index = ({ getProfilebyId, profile, match, user }) => {
     }, [getProfilebyId])
     console.log(profile.education)
     return (
-        <Div>
+        <Wrapper>
             <Picture src={profile.picture} alt={profile.firstname}></Picture>
             <BottomContainer>
                 <h1>{profile.firstname} {profile.surname}</h1>
@@ -44,7 +44,7 @@ const index = ({ getProfilebyId, profile, match, user }) => {
             ) : (
                     <h2>No education</h2>
                 )}
-        </Div>
+        </Wrapper>
     )
 }
 
