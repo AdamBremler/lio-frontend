@@ -1,8 +1,7 @@
 import styled from 'styled-components';
 
-export default styled.h1`
-    font-size: 30px;
+export default styled.div`
     display: flex;
-    margin-top: 30px;
+    flex-direction: column;
     justify-content: center;
 `;

@@ -1,17 +1,14 @@
 import React from 'react'
-import styled from 'styled-components';
+import Footer from './styled/Footer'
+import FooterWrapper from './styled/FooterWrapper';
 
 export default function index() {
-    const Div = styled.div`
-        flex-shrink: 0;
-        background-color: #f8f9fa;
-`;
 
     return (
-        <Div>
-            <footer>
+        <FooterWrapper>
+            <Footer>
                 <h3>Footer</h3>
-            </footer>
-        </Div>
+            </Footer>
+        </FooterWrapper>
     )
 }

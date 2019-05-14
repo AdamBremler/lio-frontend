@@ -1,13 +1,13 @@
 import React from 'react'
-
+import Paragraph from './styled/Paragraph';
 
 const Experience = ({ experience: { company, title, location, current, from, to, description } }) => {
     return (
         <div>
-            <p>Company name: {company}</p>
-            <p>Position: {title}</p>
-            <p>Location: {location}</p>
-            <p>Description: {description}</p>
+            <Paragraph>Company name: {company}</Paragraph>
+            <Paragraph>Position: {title}</Paragraph>
+            <Paragraph>Location: {location}</Paragraph>
+            <Paragraph>Description: {description}</Paragraph>
         </div>
     )
 }

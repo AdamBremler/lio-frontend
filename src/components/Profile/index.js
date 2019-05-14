@@ -6,6 +6,9 @@ import Div from './styled/Div';
 import Header from './styled/Header';
 import LinkWrapper from './styled/LinkWrapper';
 import Button from './styled/Button';
+import TextWrapper from './styled/TextWrapper';
+import Picture from './styled/Picture';
+import ImgWrapper from './styled/ImgWrapper';
 
 const index = ({ getProfile, user, profile }) => {
     useEffect(() => {
@@ -15,8 +18,14 @@ const index = ({ getProfile, user, profile }) => {
     return (
         <Div>
             <Header>
-                <h1>Welcome {profile.firstname}!</h1>
+                Welcome {profile.firstname}!
             </Header>
+            <ImgWrapper>
+                <Picture src={profile.picture}></Picture>
+            </ImgWrapper>
+            <TextWrapper>
+                Here you can add and edit your profile information.
+            </TextWrapper>
             <LinkWrapper>
                 <Link to="/dashboard">
                     <Button>Edit Profile</Button>

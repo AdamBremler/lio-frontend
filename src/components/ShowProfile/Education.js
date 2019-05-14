@@ -1,13 +1,13 @@
 import React from 'react'
-
+import Paragraph from './styled/Paragraph';
 
 const Education = ({ education: { school, degree, field, description, current, from, to } }) => {
     return (
         <div>
-            <p>School: {school}</p>
-            <p>Program: {field}</p>
-            <p>Degree: {degree}</p>
-            <p>Description: {description}</p>
+            <Paragraph>School: {school}</Paragraph>
+            <Paragraph>Program: {field}</Paragraph>
+            <Paragraph>Degree: {degree}</Paragraph>
+            <Paragraph>Description: {description}</Paragraph>
         </div>
     )
 }
