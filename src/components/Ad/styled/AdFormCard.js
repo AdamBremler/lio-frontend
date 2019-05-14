@@ -1,18 +1,14 @@
 import styled from 'styled-components';
-import Card from '../../common/Card';
 
 export default styled.div`
-    > form {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
+    width: 60%;
+    margin: auto;
 
-        > * {
-            width: 60%;
+    h1 {
+        margin-bottom: 30px;
+    }
 
-            > * > * {
-                width: 100%;
-            }
-        }
+    form > * > * > * {
+        width: 100%;
     }
 `;

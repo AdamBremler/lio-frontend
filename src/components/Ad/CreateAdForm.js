@@ -36,6 +36,7 @@ const validate = values => {
 function CreateAdForm({ handleSubmit, pristine, reset, submitting }) {
     return (
         <AdFormCard>
+            <h1>Create ad</h1>
             <form onSubmit={handleSubmit}>
                 <Field name='title' component={InputField} type='text' label='Title' />
                 <Field name='description' component={TextareaField} type='text' label='Description' />

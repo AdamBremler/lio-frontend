@@ -1,10 +1,9 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { getFeed } from '../../actions/feedActions';
-import { postAd } from '../../actions/adActions';
-import CreateAdForm from '../Ad/CreateAdForm';
 import FeedCard from './styled/FeedCard';
-import FeedWrapper from './styled/FeedWrapper';
+import PageWrapper from '../common/PageWrapper';
+import { Link } from 'react-router-dom';
 
 function index({ feed, isLoading, error, user, getFeed, postAd }) {
     useEffect(() => {
@@ -12,8 +11,8 @@ function index({ feed, isLoading, error, user, getFeed, postAd }) {
     }, []);
 
     return (
-        <FeedWrapper>
-            {user && user.type === 'Company' ? <CreateAdForm onSubmit={postAd} /> : null}
+        <PageWrapper>
+            {user && user.type === 'Company' ? <Link to='/ads/new'>Create ad</Link> : null}
             {feed ? (
                 <>
                     {feed.profiles ? feed.profiles.map(p =>
@@ -36,7 +35,7 @@ function index({ feed, isLoading, error, user, getFeed, postAd }) {
                     ) : null}
                 </>
             ) : null}
-        </FeedWrapper>
+        </PageWrapper>
     )
 }
 
@@ -48,8 +47,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-    getFeed: () => dispatch(getFeed()),
-    postAd: input => dispatch(postAd(input))
+    getFeed: () => dispatch(getFeed())
 });
 
 export default connect(

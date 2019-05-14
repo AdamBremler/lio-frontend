@@ -10,6 +10,7 @@ import Feed from './Feed';
 import Navbar from './Navbar';
 import Footer from './Footer';
 import Profile from './Profile';
+import NewAd from './Ad';
 import styled from 'styled-components';
 import Dashboard from './Profile/Dashboard';
 import Education from './Profile/Education';
@@ -40,6 +41,7 @@ export default function App() {
                 <ProtectedRoute exact path='/education' component={Education} />
                 <ProtectedRoute exact path='/experience' component={Experience} />
                 <Route exact path='/feed' component={Feed} />
+                <ProtectedRoute exact path='/ads/new' component={NewAd} />
             </Switch>
             <Footer />
         </Div>
