@@ -23,7 +23,7 @@ function index({ user, profile }) {
             <Link className="nav-item nav-link" to="/logout">
                 Logout
                 </Link>
-            Signed in as {profile.firstname}
+            <Link className="nav-item nav-link" to="/profile">Signed in as {profile.firstname}</Link>
         </div>
     )
     return (
