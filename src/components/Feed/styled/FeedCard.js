@@ -1,9 +1,8 @@
 import styled from 'styled-components';
+import Card from '../../common/Card';
 
-export default styled.div`
-    background-color: ${({ theme }) => theme.bg.primary};
-    box-shadow: 0 2px 10px 0 rgba(134, 141, 155, 0.2);
-    margin: 20px;
-    padding: 10px;
-    border-radius: 5px;
+export default styled(Card)`
+    h2 {
+        font-size: 1.5em;
+    }
 `;

@@ -4,6 +4,8 @@ import InputField from '../common/InputField';
 import TextareaField from '../common/TextareaField';
 import DateTimePicker from '../common/DateTimePicker';
 import SkillSelectField from '../common/SkillSelectField';
+import AdFormCard from './styled/AdFormCard';
+import Button from '../common/Button';
 
 const validate = values => {
     const errors = {};
@@ -33,14 +35,16 @@ const validate = values => {
 
 function CreateAdForm({ handleSubmit, pristine, reset, submitting }) {
     return (
-        <form onSubmit={handleSubmit}>
-            <Field name='title' component={InputField} type='text' label='Title' />
-            <Field name='description' component={TextareaField} type='text' label='Description' />
-            <SkillSelectField />
-            <Field name='location' component={InputField} type='text' label='Location' />
-            <Field name='endDate' component={DateTimePicker} type='text' label='Last date available' />
-            <button type='submit' disabled={submitting}>Submit ad</button>
-        </form>
+        <AdFormCard>
+            <form onSubmit={handleSubmit}>
+                <Field name='title' component={InputField} type='text' label='Title' />
+                <Field name='description' component={TextareaField} type='text' label='Description' />
+                <SkillSelectField />
+                <Field name='location' component={InputField} type='text' label='Location' />
+                <Field name='endDate' component={DateTimePicker} type='text' label='Last date available' />
+                <Button type='submit' disabled={submitting}>Submit ad</Button>
+            </form>
+        </AdFormCard>
     )
 }
 
