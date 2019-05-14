@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import { getFeed } from '../../actions/feedActions';
 import { postAd } from '../../actions/adActions';
 import CreateAdForm from '../Ad/CreateAdForm';
+import FeedCard from './styled/FeedCard';
+import FeedWrapper from './styled/FeedWrapper';
 
 function index({ feed, isLoading, error, user, getFeed, postAd }) {
     useEffect(() => {
@@ -10,31 +12,31 @@ function index({ feed, isLoading, error, user, getFeed, postAd }) {
     }, []);
 
     return (
-        <div>
+        <FeedWrapper>
             {user && user.type === 'Company' ? <CreateAdForm onSubmit={postAd} /> : null}
             {feed ? (
-                <div>
+                <>
                     {feed.profiles ? feed.profiles.map(p =>
-                        <div key={p._id}>
+                        <FeedCard key={p._id}>
                             <h2>{p.user.name}</h2>
                             <p>
                                 {p.type}
                                 {p.skills}
                             </p>
-                        </div>
+                        </FeedCard>
                     ) : null}
                     {feed.ads ? feed.ads.map(a =>
-                        <div key={a._id}>
+                        <FeedCard key={a._id}>
                             <h2>{a.title}</h2>
                             <p>
                                 {a.description}
                                 {a.skills}
                             </p>
-                        </div>
+                        </FeedCard>
                     ) : null}
-                </div>
+                </>
             ) : null}
-        </div>
+        </FeedWrapper>
     )
 }
 

@@ -2,6 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { ConnectedRouter } from 'connected-react-router';
+import { ThemeProvider } from 'styled-components';
+import theme from './themes/default';
 
 import store, { history } from './stores';
 
@@ -16,7 +18,9 @@ initAxios(store);
 ReactDOM.render(
     <Provider store={store}>
         <ConnectedRouter history={history}>
-            <App />
+            <ThemeProvider theme={theme}>
+                <App />
+            </ThemeProvider>
         </ConnectedRouter>
     </Provider>,
     document.getElementById('root')
