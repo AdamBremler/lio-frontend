@@ -14,7 +14,7 @@ export default function DateTimePicker({ input: { onChange, value }, label, show
             <div>
                 <Picker
                     onChange={onChange}
-                    format='DD MMM YYYY'
+                    format='YYYY-MM-DD'
                     time={showTime}
                     value={!value ? null : new Date(value)}
                 />

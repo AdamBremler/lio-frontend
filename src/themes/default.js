@@ -1,18 +1,23 @@
 export default {
     color: {
+        primary: '#2098d1'
+    },
+    textColor: {
         primary: '#262930',
-        secondary: '#393D44'
+        secondary: '#393D44',
+        tertiary: '#888'
     },
     bg: {
         body: '#F5F6F7',
         primary: '#FFF',
-        secondary: '#FCFCFC'
+        secondary: '#FCFCFC',
+        tertiary: '#6C757D'
     },
     shadow: {
         primary: '0 2px 10px 0 rgba(134, 141, 155, 0.2)'
     },
     border: {
-        primary: '1px solid #e4e4e4'
+        primary: '1px solid #E4E4E4'
     },
     padding: {
         input: '8px'

@@ -42,7 +42,7 @@ function CreateAdForm({ handleSubmit, pristine, reset, submitting }) {
                 <Field name='description' component={TextareaField} type='text' label='Description' />
                 <SkillSelectField />
                 <Field name='location' component={InputField} type='text' label='Location' />
-                <Field name='endDate' component={DateTimePicker} type='text' label='Last date available' />
+                <Field name='endDate' component={DateTimePicker} type='text' label='Application deadline' />
                 <Button type='submit' disabled={submitting}>Submit ad</Button>
             </form>
         </AdFormCard>

@@ -6,7 +6,7 @@ export default styled.div`
     > label {
         margin: 0;
         font-weight: bold;
-        color: ${({ theme }) => theme.color.secondary};
+        color: ${({ theme }) => theme.textColor.secondary};
     }
 
     input, textarea, .rw-widget-container, .rw-multiselect {

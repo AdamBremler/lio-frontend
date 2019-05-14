@@ -23,7 +23,7 @@ const Div = styled.div`
     min-height: 100vh;
     flex-direction: column;
     background-color: ${({ theme }) => theme.bg.body};
-    color: ${({ theme }) => theme.color.primary};
+    color: ${({ theme }) => theme.textColor.primary};
 `;
 
 export default function App() {
