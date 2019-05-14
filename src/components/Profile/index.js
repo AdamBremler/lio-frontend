@@ -1,12 +1,11 @@
-import styled from 'styled-components';
 import { Link } from 'react-router-dom'
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux';
 import { getProfile } from '../../actions/profileActions';
-
-const Div = styled.div`
-        flex-grow: 1;
-`;
+import Div from './styled/Div';
+import Header from './styled/Header';
+import LinkWrapper from './styled/LinkWrapper';
+import Button from './styled/Button';
 
 const index = ({ getProfile, user, profile }) => {
     useEffect(() => {
@@ -15,16 +14,23 @@ const index = ({ getProfile, user, profile }) => {
     console.log(profile)
     return (
         <Div>
-            <br />
-            <h4>Welcome {profile.firstname}!</h4>
-            <br />
-            <Link to="/dashboard">Edit profile</Link>
-            <br />
-            <Link to="/education">Add education</Link>
-            <br />
-            <Link to="/experience">Add experience</Link>
-            <br />
-            <Link to={`/profile/${user.id}`}>View profile</Link>
+            <Header>
+                <h1>Welcome {profile.firstname}!</h1>
+            </Header>
+            <LinkWrapper>
+                <Link to="/dashboard">
+                    <Button>Edit Profile</Button>
+                </Link>
+                <Link to="/education">
+                    <Button>Add education</Button>
+                </Link>
+                <Link to="/experience">
+                    <Button>Add experience</Button>
+                </Link>
+                <Link to={`/profile/${user.id}`}>
+                    <Button>View profile</Button>
+                </Link>
+            </LinkWrapper>
         </Div>
     )
 }
