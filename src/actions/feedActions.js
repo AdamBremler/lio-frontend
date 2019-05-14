@@ -11,7 +11,7 @@ export const getFeed = () => async (dispatch, getState) => {
             }
         });
 
-        dispatch(getFeedSuccess(data));
+        dispatch(getFeedSuccess(data.items));
     } catch (e) {
         dispatch(getFeedFailure(e.response ? e.response.data.msg : 'Could not load feed'));
     }

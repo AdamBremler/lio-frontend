@@ -1,40 +1,42 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, Fragment } from 'react';
 import { connect } from 'react-redux';
+import moment from 'moment';
 import { getFeed } from '../../actions/feedActions';
 import FeedCard from './styled/FeedCard';
 import PageWrapper from '../common/PageWrapper';
 import { Link } from 'react-router-dom';
+import { truncate as tr } from 'lodash';
+import Tag from '../common/styled/Tag';
+import SubTitle from './styled/FeedCardSubTitle';
 
 function index({ feed, isLoading, error, user, getFeed, postAd }) {
     useEffect(() => {
         getFeed();
     }, []);
 
+    const feedList = feed ? feed.map(i =>
+        i._itemType === 'profile' ? (
+            <FeedCard key={i._id}>
+                <h2>{i.user.name}</h2>
+                <p>
+                    {i.type}
+                    {i.skills}
+                </p>
+            </FeedCard>
+        ) : i._itemType === 'ad' ? (
+            <FeedCard key={i._id}>
+                <h2>{tr(i.title, { length: 75 })}</h2>
+                <SubTitle>{i.location}</SubTitle>
+                <p>{tr(i.description, { length: 300 })}</p>
+                {i.skills.map(s => <Fragment key={s}><Tag>{s}</Tag>{' '}</Fragment>)}
+            </FeedCard>
+        ) : null
+    ) : null;
+
     return (
         <PageWrapper>
             {user && user.type === 'Company' ? <Link to='/ads/new'>Create ad</Link> : null}
-            {feed ? (
-                <>
-                    {feed.profiles ? feed.profiles.map(p =>
-                        <FeedCard key={p._id}>
-                            <h2>{p.user.name}</h2>
-                            <p>
-                                {p.type}
-                                {p.skills}
-                            </p>
-                        </FeedCard>
-                    ) : null}
-                    {feed.ads ? feed.ads.map(a =>
-                        <FeedCard key={a._id}>
-                            <h2>{a.title}</h2>
-                            <p>
-                                {a.description}
-                                {a.skills}
-                            </p>
-                        </FeedCard>
-                    ) : null}
-                </>
-            ) : null}
+            {feedList}
         </PageWrapper>
     )
 }
