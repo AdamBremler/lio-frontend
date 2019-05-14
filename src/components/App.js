@@ -21,7 +21,8 @@ const Div = styled.div`
     display: flex;
     min-height: 100vh;
     flex-direction: column;
-    background-color: ${props => props.theme.bg.body};
+    background-color: ${({ theme }) => theme.bg.body};
+    color: ${({ theme }) => theme.color.primary};
 `;
 
 export default function App() {

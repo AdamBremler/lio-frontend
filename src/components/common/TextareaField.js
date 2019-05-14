@@ -1,4 +1,5 @@
 import React from 'react';
+import InputWrapper from './styled/InputWrapper';
 
 export default function InputField({
     input,
@@ -7,15 +8,15 @@ export default function InputField({
     meta: { touched, error, warning }
 }) {
     return (
-        <div>
+        <InputWrapper>
             <label>{label}</label>
             <div>
-                <textarea {...input} placeholder={label} type={type} />
+                <textarea {...input} type={type} />
                 {touched && (
                     (error && <span>{error}</span>) ||
                     (warning && <span>{warning}</span>)
                 )}
             </div>
-        </div>
+        </InputWrapper>
     )
 }
