@@ -11,3 +11,8 @@ export const LOGOUT = 'LOGOUT';
 export const GET_PROFILE = 'GET_PROFILE';
 export const PROFILE_FAILURE = 'PROFILE_FAILURE';
 export const CLEAR_PROFILE = 'CLEAR_PROFILE';
+export const UPDATE_PROFILE = 'UPDATE_PROFILE';
+export const ADD_EDUCATION = 'ADD_EDUCATION';
+export const ADD_EXPERIENCE = 'ADD_EXPERIENCE';
+
+

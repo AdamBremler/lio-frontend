@@ -4,7 +4,6 @@ import ParagraphBottom from './styled/ParagraphBottom';
 const Education = ({ education: { school, degree, field, description, current, from, to } }) => {
     return (
         <div>
-            <h4>Education:</h4>
             <ParagraphBottom>School: {school}</ParagraphBottom>
             <ParagraphBottom>Program: {field}</ParagraphBottom>
             <ParagraphBottom>Degree: {degree}</ParagraphBottom>

@@ -14,13 +14,18 @@ width: 40%;
 
 const index = ({ saveExperience, profile: { profile } }) => {
     const [formData, setFormData] = useState({
-
+        company: '',
+        title: '',
+        location: '',
+        from: '',
+        to: '',
+        description: '',
+        current: false
     })
     console.log(profile)
     const { title, company, location, description, from, to, isEmployed } = formData
 
     const onChange = e => {
-        console.log(e.target.value)
         setFormData({ ...formData, [e.target.name]: e.target.value })
     }
 

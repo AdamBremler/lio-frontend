@@ -1,5 +1,8 @@
-import { GET_PROFILE, PROFILE_FAILURE } from '../constants/actionTypes';
+import { GET_PROFILE, PROFILE_FAILURE, UPDATE_PROFILE, ADD_EDUCATION, ADD_EXPERIENCE } from '../constants/actionTypes';
 import Axios from 'axios';
+import { createBrowserHistory } from 'history';
+
+createBrowserHistory();
 
 //Get profile by ID(use this one to display other members profile)
 export const getProfilebyId = (id) => async (dispatch) => {
@@ -7,7 +10,7 @@ export const getProfilebyId = (id) => async (dispatch) => {
         const res = await Axios.get(`${process.env.REACT_APP_API_URL}/profile/user/${id}`)
         dispatch({ type: GET_PROFILE, payload: res.data })
     } catch (error) {
-        dispatch({ type: PROFILE_FAILURE, payload: { msg: error.response.statusText } })
+        dispatch({ type: PROFILE_FAILURE, payload: { msg: error.response } })
     }
 }
 //Get profile on the logged in user
@@ -16,7 +19,7 @@ export const getProfile = () => async (dispatch, getState) => {
         const res = await Axios.get(`${process.env.REACT_APP_API_URL}/profile/user/${getState().user.user.id}`)
         dispatch({ type: GET_PROFILE, payload: res.data })
     } catch (error) {
-        dispatch({ type: PROFILE_FAILURE, payload: { msg: error.response.statusText } })
+        dispatch({ type: PROFILE_FAILURE, payload: { msg: error.response } })
     }
 }
 
@@ -24,41 +27,53 @@ export const getProfile = () => async (dispatch, getState) => {
 export const saveProfile = (formData) => (dispatch, getState) => {
     try {
         const res = Axios.post(`${process.env.REACT_APP_API_URL}/profile/${getState().user.user.id}`, formData)
-        dispatch({ type: GET_PROFILE, payload: res.data })
+        dispatch({ type: GET_PROFILE, payload: res.data.profile })
         dispatch(profileUpdated(formData));
-
     } catch (error) {
         dispatch({ type: PROFILE_FAILURE, payload: { msg: error.response } })
         console.log('Error when saving profile')
     }
 }
 
-export const saveEducation = (formData) => (dispatch, getState) => {
-    console.log('hej')
+export const saveEducation = (formData) => async (dispatch, getState) => {
     try {
-        const res = Axios.put(`${process.env.REACT_APP_API_URL}/profile/education/${getState().user.user.id}`, formData)
-        dispatch({ type: GET_PROFILE, payload: res.data })
-        dispatch(profileUpdated(formData))
+        const res = await Axios.put(`${process.env.REACT_APP_API_URL}/profile/education/${getState().user.user.id}`, formData)
+        dispatch({ type: ADD_EDUCATION, payload: res.data })
     } catch (error) {
         dispatch({ type: PROFILE_FAILURE, payload: { msg: error.response } })
-        console.log('Error when saving education')
-    }
-}
-
-export const saveExperience = (formData) => (dispatch, getState) => {
-    console.log('hej')
-    try {
-        const res = Axios.put(`${process.env.REACT_APP_API_URL}/profile/experience/${getState().user.user.id}`, formData)
-        dispatch({ type: GET_PROFILE, payload: res.data })
-        dispatch(profileUpdated(formData))
-    } catch (error) {
         console.log('Error when saving experience')
     }
 }
 
-const profileUpdated = (formData) => ({
+export const saveExperience = (formData) => async (dispatch, getState) => {
+    try {
+        const res = await Axios.put(`${process.env.REACT_APP_API_URL}/profile/experience/${getState().user.user.id}`, formData)
+        dispatch({ type: ADD_EXPERIENCE, payload: res.data })
+
+    } catch (error) {
+        dispatch({ type: PROFILE_FAILURE, payload: { msg: error.response } })
+        console.log('Error when saving experience')
+    }
+}
+
+export const deleteExp = id => (dispatch, getState) => {
+    try {
+        const res = Axios.delete(`${process.env.REACT_APP_API_URL}/profile/experience/${id}`, {
+            headers: {
+                'Authorization': `Bearer ${getState().user.token}`
+            }
+        });
+
+        dispatch({ payload: res.data, type: UPDATE_PROFILE })
+    } catch (error) {
+        dispatch({ type: PROFILE_FAILURE, payload: { msg: error.response } })
+        console.log('Error when deleting experience')
+    }
+}
+
+const profileUpdated = (profile) => ({
     type: GET_PROFILE,
     payload: {
-        formData
+        profile
     }
 });

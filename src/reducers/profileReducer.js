@@ -1,4 +1,4 @@
-import { GET_PROFILE, PROFILE_FAILURE, CLEAR_PROFILE } from "../constants/actionTypes";
+import { GET_PROFILE, PROFILE_FAILURE, CLEAR_PROFILE, UPDATE_PROFILE, ADD_EDUCATION, ADD_EXPERIENCE } from "../constants/actionTypes";
 
 const initialState = {
     profile: [],
@@ -10,9 +10,20 @@ export default function (state = initialState, action) {
     const { type, payload } = action;
     switch (type) {
         case GET_PROFILE:
+        case UPDATE_PROFILE:
             return {
                 ...state,
                 profile: payload,
+                isLoading: false
+            }
+        case ADD_EDUCATION:
+            return {
+                profile: { ...state.profile, payload },
+                isLoading: false
+            }
+        case ADD_EXPERIENCE:
+            return {
+                profile: { ...state.profile, payload },
                 isLoading: false
             }
         case PROFILE_FAILURE:

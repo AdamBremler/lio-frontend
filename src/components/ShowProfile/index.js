@@ -39,6 +39,7 @@ const index = ({ getProfilebyId, profile, match, user }) => {
             <BottomContainer>
                 {profile.experience.length > 0 ? (
                     <div>
+                        <HeaderBio>Experience</HeaderBio>
                         {profile.experience.map(experience => (
                             <Experience key={experience._id} experience={experience} />
                         ))}
@@ -48,6 +49,7 @@ const index = ({ getProfilebyId, profile, match, user }) => {
                     )}
                 {profile.education.length > 0 ? (
                     <div>
+                        <HeaderBio>Education</HeaderBio>
                         {profile.education.map(education => (
                             <Education key={education._id} education={education} />
                         ))}
