@@ -1,13 +1,14 @@
 import React from 'react'
-import Paragraph from './styled/Paragraph';
+import ParagraphBottom from './styled/ParagraphBottom';
 
 const Education = ({ education: { school, degree, field, description, current, from, to } }) => {
     return (
         <div>
-            <Paragraph>School: {school}</Paragraph>
-            <Paragraph>Program: {field}</Paragraph>
-            <Paragraph>Degree: {degree}</Paragraph>
-            <Paragraph>Description: {description}</Paragraph>
+            <h4>Education:</h4>
+            <ParagraphBottom>School: {school}</ParagraphBottom>
+            <ParagraphBottom>Program: {field}</ParagraphBottom>
+            <ParagraphBottom>Degree: {degree}</ParagraphBottom>
+            <ParagraphBottom>Description: {description}</ParagraphBottom>
         </div>
     )
 }

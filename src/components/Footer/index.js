@@ -9,7 +9,7 @@ export default function index() {
         <FooterWrapper>
             <Footer>
                 <StyledLinkLogo>LIO</StyledLinkLogo>
-                <p>Website made by Adam Bremler and Tolga Köyluoglu</p>
+                <p>@Copyright  © 2019 LIO</p>
             </Footer>
         </FooterWrapper>
     )

@@ -4,9 +4,15 @@ import { getProfilebyId } from '../../actions/profileActions';
 import Experience from './Experience';
 import Education from './Education';
 import Wrapper from './styled/Wrapper';
-import BottomContainer from './styled/BottomContainer';
 import Picture from '../Profile/styled/Picture';
 import Paragraph from './styled/Paragraph';
+import ImgWrap from './styled/ImgWrap';
+import Header from './styled/Header';
+import TopContainer from './styled/TopContainer';
+import BottomContainer from './styled/BottomContainer';
+import { Link } from 'react-router-dom'
+import HeaderBio from './styled/HeaderBio';
+import LinkWrap from '../ShowProfile/styled/LinkWrap';
 
 const index = ({ getProfilebyId, profile, match, user }) => {
     useEffect(() => {
@@ -15,35 +21,41 @@ const index = ({ getProfilebyId, profile, match, user }) => {
     console.log(profile.education)
     return (
         <Wrapper>
-            <Picture src={profile.picture} alt={profile.firstname}></Picture>
-            <BottomContainer>
-                <h1>{profile.firstname} {profile.surname}</h1>
+            <ImgWrap>
+                <Picture src={profile.picture} alt={profile.firstname}></Picture>
+            </ImgWrap>
+            <TopContainer>
+                <Header>{profile.firstname} {profile.surname}</Header>
                 <Paragraph>{profile.status}</Paragraph>
                 <Paragraph>{profile.location}</Paragraph>
+                <HeaderBio>About {profile.firstname}:</HeaderBio>
                 <Paragraph>{profile.description}</Paragraph>
-                <Paragraph>{profile.website}</Paragraph>
-                <Paragraph>Skills: {profile.skills}</Paragraph>
+                <LinkWrap>
+                    <Link to={profile.website}>{profile.website}</Link>
+                </LinkWrap>
+                <HeaderBio>Skills:</HeaderBio>
+                <Paragraph>{profile.skills}</Paragraph>
+            </TopContainer>
+            <BottomContainer>
+                {profile.experience.length > 0 ? (
+                    <div>
+                        {profile.experience.map(experience => (
+                            <Experience key={experience._id} experience={experience} />
+                        ))}
+                    </div>
+                ) : (
+                        <HeaderBio>No experience</HeaderBio>
+                    )}
+                {profile.education.length > 0 ? (
+                    <div>
+                        {profile.education.map(education => (
+                            <Education key={education._id} education={education} />
+                        ))}
+                    </div>
+                ) : (
+                        <HeaderBio>No education</HeaderBio>
+                    )}
             </BottomContainer>
-            <h2>Experience:</h2>
-            {profile.experience.length > 0 ? (
-                <div>
-                    {profile.experience.map(experience => (
-                        <Experience key={experience._id} experience={experience} />
-                    ))}
-                </div>
-            ) : (
-                    <h2>No experience</h2>
-                )}
-            <h2>Education:</h2>
-            {profile.education.length > 0 ? (
-                <div>
-                    {profile.education.map(education => (
-                        <Education key={education._id} education={education} />
-                    ))}
-                </div>
-            ) : (
-                    <h2>No education</h2>
-                )}
         </Wrapper>
     )
 }

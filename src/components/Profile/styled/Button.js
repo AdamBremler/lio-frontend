@@ -4,16 +4,15 @@ export default styled.button`
     margin: 5px
     cursor: pointer;
     background-color: #2098d1;
-    padding: 15px 32px;
+    padding: 10px 25px;
     color: #fff;
     border: none;
-    font-size: 18px;
+    font-size: 14px;
     border-radius: 4px;
     &:hover {
-        background-color: #fff;
-        color: #000;
+        background-color: #00689A;
         border: solid 1px;
-        border-color: #2098d1;
+        border-color: ##2098DF;
         margin: 4px
     }
 `;
