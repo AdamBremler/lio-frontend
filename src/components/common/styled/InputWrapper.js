@@ -12,6 +12,8 @@ export default styled.div`
     input, textarea, .rw-widget-container, .rw-multiselect, .rw-list {
         border: ${({ theme }) => theme.border.primary};
         border-radius: 5px;
+
+        ${({ theme, error }) => error ? `border-color: ${theme.color.error}` : undefined};
     }
 
     input, textarea {
