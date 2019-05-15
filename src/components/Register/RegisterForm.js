@@ -5,11 +5,17 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import SelectField from '../common/SelectField';
 import userTypes from '../../constants/userTypes';
+import Button from '../common/Button';
+import ButtonWrapper from './styled/ButtonWrapper';
 
 const Form = styled.form`
-    width: 15%;
+    width: 20%;
     margin: auto;
     padding-top: 30px;
+
+    input {
+        width: 100%;
+    }
 `;
 
 const Div = styled.div`
@@ -30,10 +36,6 @@ const validate = values => {
         errors.password = 'Required';
     }
 
-    if (!values.name) {
-        errors.name = 'Required';
-    }
-
     if (!values.type) {
         errors.type = 'Required';
     }
@@ -44,20 +46,13 @@ const validate = values => {
 function RegisterForm({ handleSubmit, pristine, reset, submitting }) {
     return (
         <Form onSubmit={handleSubmit}>
-            <div>
-                <Field name="email" component={InputField} type="email" label="Email" />
-            </div>
-            <div>
-                <Field name="name" component={InputField} type="text" label="Name" />
-            </div>
-            <div>
-                <Field name="type" component={SelectField} type="text" label="Type" data={userTypes} />
-            </div>
-            <Div>
-                <Field name="password" component={InputField} type="password" label="Password" />
-            </Div>
-            <button type="submit" disabled={submitting} className="btn btn-primary">Register</button>
-            <Link to="/login">Login</Link>
+            <Field name="email" component={InputField} type="email" label="Email" />
+            <Field name="type" component={SelectField} label="Type" data={userTypes} />
+            <Field name="password" component={InputField} type="password" label="Password" />
+            <ButtonWrapper>
+                <Button type="submit" disabled={submitting}>Register</Button>
+                <Link to="/login">Login</Link>
+            </ButtonWrapper>
         </Form>
     )
 }
