@@ -6,22 +6,21 @@ import LinkWrapper from './styled/LinkWrapper';
 import NavList from './styled/NavList';
 import Nav from './styled/Nav';
 import Div from './styled/Div';
+import Logo from './styled/logo.png';
 
 function index({ user, profile }) {
     const notLoggedIn = (
         <div>
-            <StyledLink to="/login">
-                Login
+            <NavList>
+                <StyledLink to="/login">
+                    Login
             </StyledLink>
+            </NavList>
         </div>
 
     )
-
     const loggedIn = (
         <LinkWrapper>
-            <NavList>
-                <StyledLink to="/profile">Signed in as {profile.firstname}</StyledLink>
-            </NavList>
             <NavList>
                 <StyledLink to="/logout">Logout</StyledLink>
             </NavList>
@@ -33,7 +32,7 @@ function index({ user, profile }) {
     return (
         <Div>
             <Nav>
-                <StyledLinkLogo to="/">LIO</StyledLinkLogo>
+                <StyledLinkLogo src={Logo}></StyledLinkLogo>
                 <LinkWrapper>
                     {user ? loggedIn : notLoggedIn}
                     <NavList>

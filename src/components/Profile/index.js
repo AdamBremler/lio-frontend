@@ -17,29 +17,38 @@ const index = ({ getProfile, user, profile }) => {
     console.log(profile)
     return (
         <Div>
-            <Header>
-                Welcome {profile.firstname}!
-            </Header>
-            <ImgWrapper>
-                <Picture src={profile.picture}></Picture>
-            </ImgWrapper>
-            <TextWrapper>
-                Here you can add and edit your profile information.
-            </TextWrapper>
-            <LinkWrapper>
-                <Link to="/dashboard">
-                    <Button>Edit Profile</Button>
-                </Link>
-                <Link to="/education">
-                    <Button>Add education</Button>
-                </Link>
-                <Link to="/experience">
-                    <Button>Add experience</Button>
-                </Link>
-                <Link to={`/profile/${user.id}`}>
-                    <Button>View profile</Button>
-                </Link>
-            </LinkWrapper>
+            {profile !== '' ? (
+                <Div>
+                    <Header>
+                        Welcome {profile.firstname}!
+                        </Header>
+                    <ImgWrapper>
+                        <Picture src={profile.picture}></Picture>
+                    </ImgWrapper>
+                    <TextWrapper>
+                        Here you can add and edit your profile information.
+                        </TextWrapper>
+                    <LinkWrapper>
+                        <Link to="/dashboard">
+                            <Button>Edit Profile</Button>
+                        </Link>
+                        <Link to="/education">
+                            <Button>Add education</Button>
+                        </Link>
+                        <Link to="/experience">
+                            <Button>Add experience</Button>
+                        </Link>
+                        <Link to={`/profile/${user.id}`}>
+                            <Button>View profile</Button>
+                        </Link>
+                    </LinkWrapper>
+                </Div>
+            ) : (
+                    <div>
+                        <p>You have not setup a profile yet, please add some info.</p>
+                        <Link to="/dashboard">Create Profile</Link>
+                    </div>
+                )}
         </Div>
     )
 }

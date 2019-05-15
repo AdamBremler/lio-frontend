@@ -1,5 +1,5 @@
 import { push, replace } from 'connected-react-router';
-import { LOGIN_REQUEST, LOGIN_SUCCESS, LOGIN_FAILURE, REGISTER_REQUEST, REGISTER_SUCCESS, REGISTER_FAILURE, LOGOUT } from '../constants/actionTypes';
+import { LOGIN_REQUEST, LOGIN_SUCCESS, LOGIN_FAILURE, REGISTER_REQUEST, REGISTER_SUCCESS, REGISTER_FAILURE, LOGOUT, CLEAR_PROFILE } from '../constants/actionTypes';
 import { AFTER_LOGIN_PATH, AFTER_LOGOUT_PATH } from '../constants/paths';
 
 export const register = user => dispatch => {
@@ -94,7 +94,7 @@ const loginFailure = error => ({
 
 export const logout = () => dispatch => {
     dispatch(logoutAction());
-
+    dispatch({ type: CLEAR_PROFILE })
     dispatch(replace(AFTER_LOGOUT_PATH));
 };
 

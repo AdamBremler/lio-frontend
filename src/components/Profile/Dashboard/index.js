@@ -16,7 +16,7 @@ const index = ({ getProfile, saveProfile, profile: { profile } }) => {
         firstname: !profile.firstname ? '' : profile.firstname,
         location: !profile.location ? '' : profile.location,
         surname: !profile.surname ? '' : profile.surname,
-        picture: !profile.picture ? '' : profile.picture,
+        picture: !profile.picture ? 'https://heartvalvevoice.com/application/files/avatars/avatar-default.png' : profile.picture,
         description: !profile.description ? '' : profile.description,
         status: !profile.status ? '' : profile.status,
         type: !profile.type ? '' : profile.type,
