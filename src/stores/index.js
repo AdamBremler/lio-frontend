@@ -26,7 +26,8 @@ const store = createStore(
 
 store.subscribe(throttle(() => {
     saveState({
-        user: store.getState().user
+        user: store.getState().user,
+        profile: store.getState().profile
     });
 }, 1000));
 

@@ -9,12 +9,14 @@ import Button from './styled/Button';
 import TextWrapper from './styled/TextWrapper';
 import Picture from './styled/Picture';
 import ImgWrapper from './styled/ImgWrapper';
+import DisplayExperience from './DisplayExperience';
+import DisplayEducation from './DisplayEducation';
 
 const index = ({ getProfile, user, profile }) => {
     useEffect(() => {
         getProfile();
     }, [])
-    console.log(profile)
+    console.log(profile.experience)
     return (
         <Div>
             {profile !== '' ? (
@@ -42,6 +44,10 @@ const index = ({ getProfile, user, profile }) => {
                             <Button>View profile</Button>
                         </Link>
                     </LinkWrapper>
+                    <div>
+                        <DisplayExperience experience={profile.experience} />
+                        <DisplayEducation education={profile.education} />
+                    </div>
                 </Div>
             ) : (
                     <div>
