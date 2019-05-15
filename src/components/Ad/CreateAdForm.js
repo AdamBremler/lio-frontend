@@ -18,7 +18,7 @@ const validate = values => {
         errors.description = 'Required';
     }
 
-    if (!values.skills) {
+    if (!values.skills || !values.skills.length) {
         errors.skills = 'Required';
     }
 
