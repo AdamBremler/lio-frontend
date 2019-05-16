@@ -1,22 +1,46 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import { postAd } from '../../actions/adActions';
+import { getAd } from '../../actions/adActions';
 import PageWrapper from '../common/PageWrapper';
-import CreateAdForm from './CreateAdForm';
+import AdCard from './styled/AdCard';
+import SubTitle from './styled/AdSubTitle';
+import TagList from '../common/TagList';
+import UnstyledLink from '../common/styled/UnstyledLink';
 
-function index({ postAd }) {
+function index({ match: { params: { id } }, ad, getAd }) {
+    useEffect(() => {
+        if (!ad || id !== ad._id) getAd(id);
+    }, [id]);
+
     return (
         <PageWrapper>
-            <CreateAdForm onSubmit={postAd} />
+            {ad ? (
+                <AdCard>
+                    <h2>{ad.title}</h2>
+                    <SubTitle>
+                        <UnstyledLink to={`/profile/${ad.profile._id}`}>{ad.profile.name}</UnstyledLink>, {ad.location}
+                    </SubTitle>
+                    <div>
+                        {ad.description.split('\n').map((p, i) =>
+                            <p key={i}>{p}</p>
+                        )}
+                    </div>
+                    <TagList list={ad.skills} />
+                </AdCard>
+            ) : null}
         </PageWrapper>
     );
 }
 
+const mapStateToProps = state => ({
+    ad: state.ad.ad
+});
+
 const mapDispatchToProps = dispatch => ({
-    postAd: input => dispatch(postAd(input))
+    getAd: id => dispatch(getAd(id))
 });
 
 export default connect(
-    null,
+    mapStateToProps,
     mapDispatchToProps
 )(index);

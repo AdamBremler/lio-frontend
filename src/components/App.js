@@ -10,13 +10,13 @@ import Feed from './Feed';
 import Navbar from './Navbar';
 import Footer from './Footer';
 import Profile from './Profile';
-import NewAd from './Ad';
+import NewAd from './Ad/CreateAd';
 import styled from 'styled-components';
 import Dashboard from './Profile/Dashboard';
 import Education from './Profile/Education';
 import Experience from './Profile/Experience';
 import ShowProfile from './ShowProfile';
-
+import Ad from './Ad';
 
 const Div = styled.div`
     display: flex;
@@ -42,6 +42,7 @@ export default function App() {
                 <ProtectedRoute exact path='/experience' component={Experience} />
                 <Route exact path='/feed' component={Feed} />
                 <ProtectedRoute exact path='/ads/new' component={NewAd} />
+                <Route exact path='/ads/:id' component={Ad} />
             </Switch>
             <Footer />
         </Div>

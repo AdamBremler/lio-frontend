@@ -1,11 +1,11 @@
 import React from 'react';
 import { Field, reduxForm } from 'redux-form';
-import InputField from '../common/InputField';
-import TextareaField from '../common/TextareaField';
-import DateTimePicker from '../common/DateTimePicker';
-import SkillSelectField from '../common/SkillSelectField';
+import InputField from '../../common/InputField';
+import TextareaField from '../../common/TextareaField';
+import DateTimePicker from '../../common/DateTimePicker';
+import SkillSelectField from '../../common/SkillSelectField';
 import AdFormCard from './styled/AdFormCard';
-import Button from '../common/Button';
+import Button from '../../common/Button';
 
 const validate = values => {
     const errors = {};

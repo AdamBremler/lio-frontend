@@ -22,3 +22,7 @@ export const GET_FEED_FAILURE = 'GET_FEED_FAILURE';
 export const POST_AD_REQUEST = 'POST_AD_REQUEST';
 export const POST_AD_SUCCESS = 'POST_AD_SUCCESS';
 export const POST_AD_FAILURE = 'POST_AD_FAILURE';
+
+export const GET_AD_REQUEST = 'GET_AD_REQUEST';
+export const GET_AD_SUCCESS = 'GET_AD_SUCCESS';
+export const GET_AD_FAILURE = 'GET_AD_FAILURE';
