@@ -10,29 +10,36 @@ import TagList from '../common/TagList';
 import FeedProfileImage from './styled/FeedProfileImage';
 import FeedProfileCard from './styled/FeedProfileCard';
 import FeedLink from './FeedLink';
+import UnstyledLink from '../common/styled/UnstyledLink';
 
 function index({ feed, isLoading, error, user, getFeed, postAd }) {
     useEffect(() => {
-        getFeed();
+        if (!feed) getFeed();
     }, []);
 
     const feedList = feed ? shuffle(feed).map(i =>
         i._itemType === 'profile' ? (
             <FeedProfileCard key={i._id}>
-                <FeedProfileImage src={i.picture} />
+                <UnstyledLink to={`/profile/${i._id}`}>
+                    <FeedProfileImage src={i.picture} />
+                </UnstyledLink>
                 <div>
-                    <h2>{i.type === 'Student' ? `${i.firstname} ${i.surname}` : i.name}</h2>
-                    <SubTitle>{i.location}</SubTitle>
-                    <p>{tr(i.description, { length: 125 })}</p>
+                    <UnstyledLink to={`/profile/${i._id}`}>
+                        <h2>{i.type === 'Student' ? `${i.firstname} ${i.surname}` : i.name}</h2>
+                        <SubTitle>{i.location}</SubTitle>
+                        <p>{tr(i.description, { length: 125 })}</p>
+                    </UnstyledLink>
                     <FeedLink href={i.website}>{i.website}</FeedLink>
                     <TagList list={i.skills.slice(0, 10)} />
                 </div>
             </FeedProfileCard>
         ) : i._itemType === 'ad' ? (
             <FeedCard key={i._id}>
-                <h2>{tr(i.title, { length: 75 })}</h2>
-                <SubTitle>{i.location}</SubTitle>
-                <p>{tr(i.description, { length: 300 })}</p>
+                <UnstyledLink to={`/ads/${i._id}`}>
+                    <h2>{tr(i.title, { length: 75 })}</h2>
+                    <SubTitle>{`${i.profile.name}, ${i.location}`}</SubTitle>
+                    <p>{tr(i.description, { length: 300 })}</p>
+                </UnstyledLink>
                 <TagList list={i.skills.slice(0, 10)} />
             </FeedCard>
         ) : null
