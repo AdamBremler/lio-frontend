@@ -23,11 +23,9 @@ const index = ({ getProfile, saveProfile, profile: { profile } }) => {
         website: !profile.website ? '' : profile.website,
         skills: !profile.skills ? '' : profile.skills,
     })
-    console.log(profile)
     const { firstname, surname, picture, location, description, status, type, website, skills } = formData
 
     const onChange = e => {
-        console.log(e.target.value)
         setFormData({ ...formData, [e.target.name]: e.target.value })
     }
 

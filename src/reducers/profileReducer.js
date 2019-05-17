@@ -9,12 +9,17 @@ const initialState = {
 export default function (state = initialState, action) {
     const { type, payload } = action;
     switch (type) {
-        case GET_PROFILE:
         case UPDATE_PROFILE:
             return {
                 ...state,
                 profile: payload,
-                isLoading: false
+                isLoading: false,
+            }
+        case GET_PROFILE:
+            return {
+                ...state,
+                profile: payload,
+                isLoading: false,
             }
         case ADD_EDUCATION:
             return {
@@ -35,8 +40,9 @@ export default function (state = initialState, action) {
         case CLEAR_PROFILE:
             return {
                 ...state,
+                error: null,
                 profile: '',
-                isLoading: false
+                isLoading: false,
             }
         default:
             return state;

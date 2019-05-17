@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 
 export default styled.div`
-    display: flex;
-    justify-content: center;
+    width: 25%;
+    display: table-cell;
+    vertical-align: top;
+    padding-left: 20px;
 `;

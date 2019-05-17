@@ -1,7 +1,8 @@
 import styled from 'styled-components';
 
 export default styled.h4`
-    display: flex;
-    justify-content: center;
     margin: 15px;
+    margin:auto;
+    padding-top: 20px;
+    padding-left: 7px;
 `;

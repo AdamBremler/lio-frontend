@@ -1,8 +1,7 @@
 import styled from 'styled-components';
 
-export default styled.div`
-    display: flex;
-    justify-content: center;
-    margin: 15px;
+export default styled.div` 
+    padding-bottom: 10px;
     color: #000;
+    padding-left: 6px;
 `;

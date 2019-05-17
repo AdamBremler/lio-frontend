@@ -14,7 +14,6 @@ const index = ({ saveEducation, profile: { profile } }) => {
         description: '',
         current: false
     })
-    console.log(profile)
     const { school, degree, field, description, from, to, isStudying } = formData
 
     const onChange = e => {

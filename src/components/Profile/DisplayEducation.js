@@ -1,11 +1,13 @@
 import React from 'react'
+import { connect } from 'react-redux';
 import Table from './styled/Table';
 import Th from './styled/Th';
 import Tr from './styled/Tr';
 import DeleteBtn from './styled/DeleteBtn';
 import Thead from './styled/Thead';
+import { deleteEducation } from '../../actions/profileActions';
 
-const DisplayEducation = ({ education }) => {
+const DisplayEducation = ({ education, deleteEducation }) => {
 
     const EducationList = education.map(i => {
         return (
@@ -14,7 +16,7 @@ const DisplayEducation = ({ education }) => {
                 <Th>{i.field}</Th>
                 <Th>{i.degree}</Th>
                 <Th>{i.from} - {i.to}</Th>
-                <Th><DeleteBtn type="submit">Delete</DeleteBtn></Th>
+                <Th><DeleteBtn onClick={() => deleteEducation(i._id)}>Delete</DeleteBtn></Th>
             </Tr>
         )
     })
@@ -38,5 +40,6 @@ const DisplayEducation = ({ education }) => {
         </div>
     )
 }
-export default DisplayEducation
+export default connect(null, { deleteEducation })(DisplayEducation)
+
 

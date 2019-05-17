@@ -2,7 +2,9 @@ import styled from 'styled-components';
 
 export default styled.div`
     display: flex;
+    width: 100%;
     margin-bottom: 40px;
     margin-top: 10px;
-    border-top: 1px solid #e2e2e2;
+    padding-bottom: 20px;
+    box-shadow: 0 0 15px #f1f1f1;
 `;

@@ -22,7 +22,6 @@ const index = ({ saveExperience, profile: { profile } }) => {
         description: '',
         current: false
     })
-    console.log(profile)
     const { title, company, location, description, from, to, isEmployed } = formData
 
     const onChange = e => {

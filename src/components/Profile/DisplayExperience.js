@@ -9,17 +9,13 @@ import { deleteExp } from '../../actions/profileActions';
 
 const DisplayExperience = ({ experience, deleteExp }) => {
 
-    const onSubmit = (id) => {
-        deleteExp(id)
-    }
-
     const experienceList = experience.map(exp => {
         return (
             <Tr key={exp._id}>
                 <Th>{exp.company}</Th>
                 <Th>{exp.title}</Th>
                 <Th>{exp.from} - {exp.to}</Th>
-                <Th><DeleteBtn onClick={() => onSubmit(exp._id)}>Delete</DeleteBtn></Th>
+                <Th><DeleteBtn onClick={() => deleteExp(exp._id)}>Delete</DeleteBtn></Th>
             </Tr>
         )
     })
@@ -43,12 +39,6 @@ const DisplayExperience = ({ experience, deleteExp }) => {
     )
 }
 
-const mapStateToProps = state => {
-    return {
-        profile: state.profile.profile,
-        user: state.user.user,
-    }
-}
 
-export default connect(mapStateToProps, { deleteExp })(DisplayExperience)
+export default connect(null, { deleteExp })(DisplayExperience)
 

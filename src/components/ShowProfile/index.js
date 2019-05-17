@@ -13,29 +13,39 @@ import BottomContainer from './styled/BottomContainer';
 import { Link } from 'react-router-dom'
 import HeaderBio from './styled/HeaderBio';
 import LinkWrap from '../ShowProfile/styled/LinkWrap';
+import TopWrap from './styled/TopWrap';
+import InfoWrap from './styled/InfoWrap';
+import SkillsWrap from './styled/SkillsWrap';
 
 const index = ({ getProfilebyId, profile, match, user }) => {
     useEffect(() => {
         getProfilebyId(match.params.id)
     }, [getProfilebyId])
-    console.log(profile.education)
     return (
         <Wrapper>
-            <ImgWrap>
-                <Picture src={profile.picture} alt={profile.firstname}></Picture>
-            </ImgWrap>
-            <TopContainer>
+            <TopWrap>
                 <Header>{profile.firstname} {profile.surname}</Header>
+                <div>
+                    <ImgWrap>
+                        <Picture src={profile.picture} alt={profile.firstname}></Picture>
+                    </ImgWrap>
+                    <TopContainer>
+                        <HeaderBio>About {profile.firstname}:</HeaderBio>
+                        <Paragraph>{profile.description}</Paragraph>
+                    </TopContainer>
+                </div>
+            </TopWrap>
+            <SkillsWrap>
+                <HeaderBio>Skills:</HeaderBio>
+                <Paragraph>{profile.skills}</Paragraph>
+            </SkillsWrap>
+            <InfoWrap>
                 <Paragraph>{profile.status}</Paragraph>
                 <Paragraph>{profile.location}</Paragraph>
-                <HeaderBio>About {profile.firstname}:</HeaderBio>
-                <Paragraph>{profile.description}</Paragraph>
                 <LinkWrap>
                     <Link to={profile.website}>{profile.website}</Link>
                 </LinkWrap>
-                <HeaderBio>Skills:</HeaderBio>
-                <Paragraph>{profile.skills}</Paragraph>
-            </TopContainer>
+            </InfoWrap>
             <BottomContainer>
                 {profile.experience.length > 0 ? (
                     <div>

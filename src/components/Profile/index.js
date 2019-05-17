@@ -16,7 +16,6 @@ const index = ({ getProfile, user, profile }) => {
     useEffect(() => {
         getProfile();
     }, [])
-    console.log(profile.experience)
     return (
         <Div>
             {profile !== '' ? (
