@@ -8,7 +8,9 @@ export default styled.div`
         margin-bottom: 30px;
     }
 
-    form > * > * > * {
-        width: 100%;
+    form > * > * {
+        > input, textarea {
+            width: 100%;
+        }
     }
 `;

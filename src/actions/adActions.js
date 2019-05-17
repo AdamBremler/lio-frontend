@@ -1,19 +1,20 @@
 import axios from '../helpers/lioAxiosInstance';
 import { reset } from 'redux-form';
 import { POST_AD_REQUEST, POST_AD_SUCCESS, POST_AD_FAILURE, GET_AD_REQUEST, GET_AD_SUCCESS, GET_AD_FAILURE } from '../constants/actionTypes';
+import { replace } from 'connected-react-router';
 
 export const postAd = input => async (dispatch, getState) => {
     dispatch(postAdRequest());
 
     try {
-        const res = await axios.post('/ads', { ...input }, {
+        const { data } = await axios.post('/ads', { ...input }, {
             headers: {
                 'Authorization': `Bearer ${getState().user.token}`
             }
         });
 
-        dispatch(reset('createAd'));
         dispatch(postAdSuccess());
+        dispatch(replace(`/ads/${data._id}`));
     } catch (e) {
         dispatch(postAdFailure(e.response ? e.response.data.msg : 'Could not post ad'));
     }

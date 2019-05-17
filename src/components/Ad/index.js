@@ -18,7 +18,7 @@ function index({ match: { params: { id } }, ad, getAd }) {
                 <AdCard>
                     <h2>{ad.title}</h2>
                     <SubTitle>
-                        <UnstyledLink to={`/profile/${ad.profile._id}`}>{ad.profile.name}</UnstyledLink>, {ad.location}
+                        <UnstyledLink to={`/profile/${ad.profile._id}`}>{ad.profile.name}</UnstyledLink> - {ad.location}
                     </SubTitle>
                     <div>
                         {ad.description.split('\n').map((p, i) =>

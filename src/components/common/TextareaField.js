@@ -8,7 +8,6 @@ export default function InputField({
     type,
     meta: { touched, error, warning }
 }) {
-    debugger;
     return (
         <InputWrapper error={touched && error}>
             <label>{label}</label>

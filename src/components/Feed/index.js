@@ -37,7 +37,7 @@ function index({ feed, isLoading, error, user, getFeed, postAd }) {
             <FeedCard key={i._id}>
                 <UnstyledLink to={`/ads/${i._id}`}>
                     <h2>{tr(i.title, { length: 75 })}</h2>
-                    <SubTitle>{`${i.profile.name}, ${i.location}`}</SubTitle>
+                    <SubTitle>{`${i.profile.name} - ${i.location}`}</SubTitle>
                     <p>{tr(i.description, { length: 300 })}</p>
                 </UnstyledLink>
                 <TagList list={i.skills.slice(0, 10)} />

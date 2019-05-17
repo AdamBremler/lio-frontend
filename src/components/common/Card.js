@@ -6,4 +6,5 @@ export default styled.div`
     margin: 20px 0;
     padding: 18px;
     border-radius: 5px;
+    overflow-wrap: break-word;
 `;
