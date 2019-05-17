@@ -6,4 +6,5 @@ export default styled.div`
     box-shadow: 0 0 15px #f1f1f1;
     padding-left: 16px;
     margin-bottom: 20px;
+    border-radius: 10px;
 `;

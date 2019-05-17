@@ -4,5 +4,6 @@ export default styled.h4`
     margin: 15px;
     margin:auto;
     padding-top: 20px;
-    padding-left: 7px;
+    padding-bottom: 5px;
+    padding-left: 6px;
 `;

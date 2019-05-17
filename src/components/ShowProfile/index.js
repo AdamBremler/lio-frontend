@@ -40,10 +40,11 @@ const index = ({ getProfilebyId, profile, match, user }) => {
                 <Paragraph>{profile.skills}</Paragraph>
             </SkillsWrap>
             <InfoWrap>
-                <Paragraph>{profile.status}</Paragraph>
-                <Paragraph>{profile.location}</Paragraph>
+                <HeaderBio>Details</HeaderBio>
+                <Paragraph>Status: {profile.status}</Paragraph>
+                <Paragraph>Location: {profile.location}</Paragraph>
                 <LinkWrap>
-                    <Link to={profile.website}>{profile.website}</Link>
+                    Website: <Link to={profile.website}>{profile.website}</Link>
                 </LinkWrap>
             </InfoWrap>
             <BottomContainer>

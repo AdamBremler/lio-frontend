@@ -7,4 +7,5 @@ export default styled.div`
     margin-top: 10px;
     padding-bottom: 20px;
     box-shadow: 0 0 15px #f1f1f1;
+    border-radius: 10px;
 `;

@@ -7,5 +7,5 @@ export default styled.div`
     box-shadow: 0 0 15px #f1f1f1;
     margin-right: 20px;
     margin-bottom: 20px;
-
+    border-radius: 10px;
 `;

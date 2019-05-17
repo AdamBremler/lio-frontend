@@ -5,4 +5,5 @@ export default styled.div`
     display: table-cell;
     vertical-align: top;
     padding-left: 20px;
+    padding-right: 14px;
 `;
