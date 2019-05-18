@@ -1,51 +1,55 @@
 import React from 'react'
-import styled from 'styled-components';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom'
+import StyledLinkLogo from './styled/StyledLinkLogo';
+import StyledLink from './styled/StyledLink';
+import LinkWrapper from './styled/LinkWrapper';
+import NavList from './styled/NavList';
+import Nav from './styled/Nav';
+import Div from './styled/Div';
+import Logo from './styled/logo.png';
 
-const Div = styled.div`
-    flex-shrink: 0;
-`;
-
-function index({ user }) {
+function index({ user, profile }) {
     const notLoggedIn = (
-        <div className="navbar-nav">
-            <Link className="nav-item nav-link" to="/login">
-                Login
-            </Link>
+        <div>
+            <NavList>
+                <StyledLink to="/login">
+                    Login
+            </StyledLink>
+            </NavList>
         </div>
 
     )
-
     const loggedIn = (
-        <div className="navbar-nav">
-            <Link className="nav-item nav-link" to="/profile">Profile</Link>
-            <Link className="nav-item nav-link" to="/logout">
-                Logout
-                </Link>
-        </div>
+        <LinkWrapper>
+            <NavList>
+                <StyledLink to="/logout">Logout</StyledLink>
+            </NavList>
+            <NavList>
+                <StyledLink to="/profile">Profile</StyledLink>
+            </NavList>
+        </LinkWrapper>
     )
     return (
         <Div>
-            <nav className="navbar navbar-expand-lg navbar-light bg-light">
-                <Link className="navbar-brand" to="/">LIO</Link>
-                <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                    <span className="navbar-toggler-icon"></span>
-                </button>
-                <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
-                    <div className="navbar-nav">
-                        <Link className="nav-item nav-link active" to="/">Home <span className="sr-only">(current)</span></Link>
-                        <Link className="nav-item nav-link" to="/feed">Feed</Link>
-                        {user ? loggedIn : notLoggedIn}
-                    </div>
-                </div>
-            </nav>
+            <Nav>
+                <StyledLinkLogo src={Logo}></StyledLinkLogo>
+                <LinkWrapper>
+                    {user ? loggedIn : notLoggedIn}
+                    <NavList>
+                        <StyledLink to="/">Home</StyledLink>
+                    </NavList>
+                    <NavList>
+                        <StyledLink to="/feed">Feed</StyledLink>
+                    </NavList>
+                </LinkWrapper>
+            </Nav>
         </Div>
     )
 }
 
 const mapStateToProps = state => ({
-    user: state.user.user
+    user: state.user.user,
+    profile: state.profile.profile
 });
 
 export default connect(

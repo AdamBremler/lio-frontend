@@ -1,17 +1,17 @@
 import React from 'react'
-import styled from 'styled-components';
+import Footer from './styled/Footer'
+import FooterWrapper from './styled/FooterWrapper';
+import StyledLinkLogo from '../Navbar/styled/StyledLinkLogo';
+import Logo from '../Navbar/styled/logo.png';
 
 export default function index() {
-    const Div = styled.div`
-        flex-shrink: 0;
-        background-color: #f8f9fa;
-`;
 
     return (
-        <Div>
-            <footer>
-                <h3>Footer</h3>
-            </footer>
-        </Div>
+        <FooterWrapper>
+            <Footer>
+                <StyledLinkLogo src={Logo}></StyledLinkLogo>
+                <p>@Copyright  © 2019 LIO</p>
+            </Footer>
+        </FooterWrapper>
     )
 }

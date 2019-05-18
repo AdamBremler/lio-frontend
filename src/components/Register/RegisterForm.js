@@ -19,10 +19,6 @@ const Div = styled.div`
 const validate = values => {
     const errors = {};
 
-    if (!values.name) {
-        errors.name = 'Required';
-    }
-
     if (!values.email) {
         errors.email = 'Required'
     } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
@@ -41,9 +37,6 @@ function RegisterForm({ handleSubmit, pristine, reset, submitting }) {
         <Form onSubmit={handleSubmit}>
             <div>
                 <Field name="email" component={InputField} type="email" label="Email" />
-            </div>
-            <div>
-                <Field name="name" component={InputField} type="text" label="Name" />
             </div>
             <Div>
                 <Field name="password" component={InputField} type="password" label="Password" />
