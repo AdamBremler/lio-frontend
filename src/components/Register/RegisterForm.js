@@ -8,6 +8,8 @@ import userTypes from '../../constants/userTypes';
 import Button from '../common/Button';
 import ButtonWrapper from './styled/ButtonWrapper';
 import { connect } from 'react-redux';
+import industries from '../../constants/industries';
+import DropdownSelectField from '../common/DropdownSelectField';
 
 const Form = styled.form`
     width: 20%;
@@ -46,6 +48,10 @@ const validate = values => {
         }
     }
 
+    if (!values.industry || !/\S/.test(values.industry)) {
+        errors.industry = 'Required';
+    }
+
     return errors;
 }
 
@@ -62,6 +68,7 @@ function RegisterForm({ handleSubmit, pristine, reset, submitting, typeValue }) 
             ) : typeValue === 'Company' ? (
                 <Field name="name" component={InputField} type="text" label="Company name" />
             ) : null}
+            <Field name="industry" component={DropdownSelectField} label="Industry" data={industries} />
             <Field name="password" component={InputField} type="password" label="Password" normalize={value => value && value.replace(/\s/g, '')} />
             <ButtonWrapper>
                 <Button type="submit" disabled={submitting}>Register</Button>

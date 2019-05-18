@@ -9,7 +9,7 @@ export default styled.div`
         color: ${({ theme }) => theme.textColor.secondary};
     }
 
-    input, textarea, .rw-widget-container, .rw-multiselect, .rw-list {
+    input, textarea, .rw-widget-container, .rw-multiselect, .rw-list, .rw-dropdown-list {
         border: ${({ theme }) => theme.border.primary};
         border-radius: 5px;
 
@@ -20,10 +20,8 @@ export default styled.div`
         padding: ${({ theme }) => theme.padding.input};
     }
 
-    .rw-widget-input {
+    .rw-widget-input, .rw-input-reset, .rw-filter-input {
         border: none;
         box-shadow: none;
     }
 `;
-
-// rw-select-list rw-widget-input rw-widget-container rw-widget
