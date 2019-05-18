@@ -4,20 +4,24 @@ import { getFeed } from '../../actions/feedActions';
 import FeedCard from './styled/FeedCard';
 import PageWrapper from '../common/PageWrapper';
 import { Link } from 'react-router-dom';
-import { truncate as tr, shuffle } from 'lodash';
+import { truncate as tr } from 'lodash';
 import SubTitle from './styled/FeedCardSubTitle';
 import TagList from '../common/TagList';
 import FeedProfileImage from './styled/FeedProfileImage';
 import FeedProfileCard from './styled/FeedProfileCard';
 import FeedLink from './FeedLink';
 import UnstyledLink from '../common/styled/UnstyledLink';
+import Pagination from '../common/Pagination';
 
-function index({ feed, isLoading, error, user, getFeed, postAd }) {
+function index({ feed, isLoading, error, user, pagination, getFeed, postAd }) {
     useEffect(() => {
         if (!feed) getFeed();
     }, []);
 
-    const feedList = feed ? shuffle(feed).map(i =>
+    const feedList = feed && pagination ? feed.slice(
+        (pagination.current - 1) * pagination.pageSize,
+        (pagination.current - 1) * pagination.pageSize + pagination.pageSize
+    ).map(i =>
         i._itemType === 'profile' ? (
             <FeedProfileCard key={i._id}>
                 <UnstyledLink to={`/profile/${i._id}`}>
@@ -49,6 +53,7 @@ function index({ feed, isLoading, error, user, getFeed, postAd }) {
         <PageWrapper>
             {user && user.type === 'Company' ? <Link to='/ads/new'>Create ad</Link> : null}
             {feedList}
+            {feed ? <Pagination total={feed.length} name='feed' /> : null}
         </PageWrapper>
     )
 }
@@ -57,7 +62,8 @@ const mapStateToProps = state => ({
     feed: state.feed.feed,
     isLoading: state.login.isLoading,
     error: state.login.error,
-    user: state.user.user
+    user: state.user.user,
+    pagination: state.pagination.feed
 });
 
 const mapDispatchToProps = dispatch => ({

@@ -7,6 +7,7 @@ import profile from './profileReducer';
 import registration from './registrationReducer';
 import feed from './feedReducer';
 import ad from './adReducer';
+import pagination from './paginationReducer';
 
 const rootReducer = history => combineReducers({
     router: connectRouter(history),
@@ -16,7 +17,8 @@ const rootReducer = history => combineReducers({
     registration,
     profile,
     feed,
-    ad
+    ad,
+    pagination
 });
 
 export default rootReducer;
