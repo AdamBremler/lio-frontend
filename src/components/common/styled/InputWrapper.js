@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export default styled.div`
-    margin: 10px 0 10px;
+    margin: ${({ noMargin }) => noMargin ? undefined : '10px 0 10px'};
 
     > label {
         margin: 0;

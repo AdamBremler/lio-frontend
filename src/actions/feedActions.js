@@ -1,14 +1,15 @@
 import axios from '../helpers/lioAxiosInstance';
 import { GET_FEED_REQUEST, GET_FEED_SUCCESS, GET_FEED_FAILURE } from '../constants/actionTypes';
 
-export const getFeed = () => async (dispatch, getState) => {
+export const getFeed = params => async (dispatch, getState) => {
     dispatch(getFeedRequest());
 
     try {
         const { data } = await axios.get('/feed', {
             headers: {
                 'Authorization': `Bearer ${getState().user.token}`
-            }
+            },
+            params
         });
 
         dispatch(getFeedSuccess(data.items));

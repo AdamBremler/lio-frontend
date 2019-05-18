@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { getFeed } from '../../actions/feedActions';
 import FeedCard from './styled/FeedCard';
 import PageWrapper from '../common/PageWrapper';
-import { Link } from 'react-router-dom';
 import { truncate as tr } from 'lodash';
 import SubTitle from './styled/FeedCardSubTitle';
 import TagList from '../common/TagList';
@@ -12,6 +12,8 @@ import FeedProfileCard from './styled/FeedProfileCard';
 import FeedLink from './FeedLink';
 import UnstyledLink from '../common/styled/UnstyledLink';
 import Pagination from '../common/Pagination';
+import Filter from './Filter';
+import TopBarWrapper from './styled/TopBarWrapper';
 
 function index({ feed, isLoading, error, user, pagination, getFeed, postAd }) {
     useEffect(() => {
@@ -51,7 +53,10 @@ function index({ feed, isLoading, error, user, pagination, getFeed, postAd }) {
 
     return (
         <PageWrapper>
-            {user && user.type === 'Company' ? <Link to='/ads/new'>Create ad</Link> : null}
+            <TopBarWrapper>
+                {user && user.type === 'Company' ? <Link to='/ads/new'>Create ad</Link> : null}
+                <Filter user={user} getFeed={getFeed} />
+            </TopBarWrapper>
             {feedList}
             {feed ? <Pagination total={feed.length} name='feed' /> : null}
         </PageWrapper>
@@ -67,7 +72,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-    getFeed: () => dispatch(getFeed())
+    getFeed: params => dispatch(getFeed(params))
 });
 
 export default connect(
