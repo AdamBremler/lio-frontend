@@ -2,9 +2,13 @@ import { GET_PROFILE, PROFILE_FAILURE, UPDATE_PROFILE, ADD_EDUCATION, ADD_EXPERI
 import Axios from 'axios';
 
 //Get profile by ID(use this one to display other members profile)
-export const getProfilebyId = (id) => async (dispatch) => {
+export const getProfilebyId = (id) => async (dispatch, getState) => {
     try {
-        const res = await Axios.get(`${process.env.REACT_APP_API_URL}/profile/user/${id}`)
+        const res = await Axios.get(`${process.env.REACT_APP_API_URL}/profile/user/${id}`, {
+            headers: {
+                'Authorization': `Bearer ${getState().user.token}`
+            }
+        })
         dispatch({ type: GET_PROFILE, payload: res.data })
     } catch (error) {
         dispatch({ type: PROFILE_FAILURE, payload: { msg: error.response } })
