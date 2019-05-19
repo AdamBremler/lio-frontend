@@ -12,7 +12,7 @@ export default function InputField({
         <InputWrapper error={touched && error}>
             <label>{label}</label>
             <div>
-                <input {...input} type={type} />
+                <textarea {...input} type={type} />
                 {touched && (
                     (error && <InputError>{error}</InputError>) ||
                     (warning && <span>{warning}</span>)

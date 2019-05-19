@@ -2,12 +2,18 @@ import React from 'react';
 import { Field, reduxForm } from 'redux-form';
 import InputField from '../common/InputField'
 import styled from 'styled-components';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
+import Button from '../common/Button';
+import ButtonWrapper from './styled/ButtonWrapper';
 
 const Form = styled.form`
-    width: 15%;
+    width: 20%;
     margin: auto;
     padding-top: 30px;
+
+    input {
+        width: 100%;
+    }
 `;
 
 const Div = styled.div`
@@ -34,14 +40,12 @@ const validate = values => {
 function LoginForm({ handleSubmit, pristine, reset, submitting }) {
     return (
         <Form onSubmit={handleSubmit}>
-            <div className="form-group">
-                <Field name="email" component={InputField} type="email" label="Email" />
-            </div>
-            <Div>
-                <Field name="password" component={InputField} type="password" label="Password" />
-            </Div>
-            <button type="submit" className="btn btn-primary" disabled={submitting}>Login</button>
-            <Link to="/register">Register</Link>
+            <Field name="email" component={InputField} type="email" label="Email" />
+            <Field name="password" component={InputField} type="password" label="Password" />
+            <ButtonWrapper>
+                <Button type="submit" disabled={submitting}>Login</Button>
+                <Link to="/register">Register</Link>
+            </ButtonWrapper>
         </Form>
     )
 }
