@@ -1,22 +1,18 @@
 import styled from 'styled-components';
-import { lighten } from 'polished';
+import { Link } from 'react-router-dom';
 
-export default styled.button`
+export default styled(Link)`
     display: block;
     width: fit-content;
     height: fit-content;
-    padding: 12.5px 13px 12px;
+    padding: 11px 11px 11px 13px;
     border-radius: 5px;
-    background-color: ${({ theme }) => theme.color.primary};
+    background-color: ${({ theme }) => theme.bg.primary};
+    border: ${({ theme }) => theme.border.primary};
     color: ${({ theme }) => theme.bg.primary};
     font-weight: bold;
-    border: none;
     transition: all 0.2s;
     cursor: pointer;
-
-    :hover {
-        background-color: ${({ theme }) => lighten(0.1, theme.color.primary)};
-    }
 
     > img {
         width: 20px;

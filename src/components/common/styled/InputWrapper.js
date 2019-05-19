@@ -7,11 +7,17 @@ export default styled.div`
         margin: 0;
         font-weight: bold;
         color: ${({ theme }) => theme.textColor.secondary};
+
+        + * {
+            margin-top: 4px;
+        }
     }
 
     input, textarea, .rw-widget-container, .rw-multiselect, .rw-list, .rw-dropdown-list {
         border: ${({ theme }) => theme.border.primary};
         border-radius: 5px;
+        font-size: 1em;
+        box-sizing: border-box;
 
         ${({ theme, error }) => error ? `border-color: ${theme.color.error}` : undefined};
     }

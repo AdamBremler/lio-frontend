@@ -21,6 +21,6 @@ export default {
         primary: '1px solid #E4E4E4'
     },
     padding: {
-        input: '8px'
+        input: '14px'
     }
 };

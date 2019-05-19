@@ -5,5 +5,6 @@ export default styled(Card)`
     h2 {
         font-size: 1.5em;
         font-weight: bold;
+        margin: 0;
     }
 `;

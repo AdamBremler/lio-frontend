@@ -9,8 +9,11 @@ export default styled(Pagination)`
     padding: 0;
 
     .rc-pagination-item, .rc-pagination-jump-next, .rc-pagination-jump-prev, .rc-pagination-prev, .rc-pagination-next {
+        > a {
+            color: ${({ theme }) => theme.textColor.tertiary};
+        }
+
         padding: 0%;
-        color: ${({ theme }) => theme.textColor.tertiary};
         background-color: ${({ theme }) => theme.bg.primary};
         box-shadow: ${({ theme }) => theme.shadow.primary};
         border-radius: 5px;

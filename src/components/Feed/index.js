@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
 import { getFeed } from '../../actions/feedActions';
 import FeedCard from './styled/FeedCard';
 import PageWrapper from '../common/PageWrapper';
@@ -14,6 +13,8 @@ import UnstyledLink from '../common/styled/UnstyledLink';
 import Pagination from '../common/Pagination';
 import Filter from './Filter';
 import TopBarWrapper from './styled/TopBarWrapper';
+import CreateAdLink from './styled/CreateAdLink';
+import createAdIcon from './img/createAd.svg';
 
 function index({ feed, isLoading, error, user, pagination, getFeed, postAd }) {
     useEffect(() => {
@@ -54,7 +55,7 @@ function index({ feed, isLoading, error, user, pagination, getFeed, postAd }) {
     return (
         <PageWrapper>
             <TopBarWrapper>
-                {user && user.type === 'Company' ? <Link to='/ads/new'>Create ad</Link> : null}
+                {user && user.type === 'Company' ? <CreateAdLink to='/ads/new' title='Create ad'><img src={createAdIcon} /></CreateAdLink> : null}
                 <Filter user={user} getFeed={getFeed} />
             </TopBarWrapper>
             {feedList}
