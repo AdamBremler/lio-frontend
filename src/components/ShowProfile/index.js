@@ -17,6 +17,7 @@ import TopWrap from './styled/TopWrap';
 import InfoWrap from './styled/InfoWrap';
 import SkillsWrap from './styled/SkillsWrap';
 import Div from './styled/WrapEduAndExp';
+import TagList from '../common/TagList';
 
 const index = ({ getProfilebyId, profile, match, user }) => {
     useEffect(() => {
@@ -41,7 +42,7 @@ const index = ({ getProfilebyId, profile, match, user }) => {
             ) : (
             <SkillsWrap>
                 <HeaderBio>Skills:</HeaderBio>
-                <Paragraph>{profile.skills}</Paragraph>
+                <TagList list={profile.skills.slice(0, 10)} />                
             </SkillsWrap>
             )}
             <InfoWrap>
