@@ -31,7 +31,7 @@ export default function App() {
         <Div>
             < Navbar />
             <Switch>
-                <ProtectedRoute exact path='/' component={Home} />
+                <Route exact path='/' component={Home} />
                 <PublicRoute exact path='/login' component={Login} />
                 <PublicRoute exact path='/register' component={Register} />
                 <ProtectedRoute exact path='/profile/:id' component={ShowProfile} />

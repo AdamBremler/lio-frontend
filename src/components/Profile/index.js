@@ -1,5 +1,5 @@
-import { Link } from 'react-router-dom'
-import React, { useEffect } from 'react'
+import { Link } from 'react-router-dom';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { getProfile } from '../../actions/profileActions';
 import Div from './styled/Div';
@@ -39,7 +39,7 @@ const index = ({ getProfile, user, profile }) => {
                         <Link to="/experience">
                             <Button>Add experience</Button>
                         </Link>
-                        <Link to={`/profile/${user.id}`}>
+                        <Link to={`/profile/${profile._id}`}>
                             <Button>View profile</Button>
                         </Link>
                     </LinkWrapper>
