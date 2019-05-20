@@ -27,9 +27,19 @@ const index = ({ getProfile, user, profile }) => {
                         <Picture src={profile.picture}></Picture>
                     </ImgWrapper>
                     <TextWrapper>
-                        Here you can add and edit your profile information.
+                        Here you can edit and add information to your profile.
                         </TextWrapper>
-                    <LinkWrapper>
+                        {profile.type === 'Company' ? (
+                <LinkWrapper>
+                        <Link to="/dashboard">
+                            <Button>Edit Profile</Button>
+                        </Link>
+                        <Link to={`/profile/${profile._id}`}>
+                            <Button>View profile</Button>
+                        </Link>
+                    </LinkWrapper>
+                        ) : (
+                            <LinkWrapper>
                         <Link to="/dashboard">
                             <Button>Edit Profile</Button>
                         </Link>
@@ -43,10 +53,16 @@ const index = ({ getProfile, user, profile }) => {
                             <Button>View profile</Button>
                         </Link>
                     </LinkWrapper>
-                    <div>
+                        )}
+
+                        {profile.type === 'Company' ? (
+                            <div></div>
+                        ) : (
+                            <div>
                         <DisplayExperience experience={profile.experience} />
                         <DisplayEducation education={profile.education} />
                     </div>
+                        )}
                 </Div>
             ) : (
                     <div>

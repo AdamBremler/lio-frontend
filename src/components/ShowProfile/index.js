@@ -16,6 +16,8 @@ import LinkWrap from '../ShowProfile/styled/LinkWrap';
 import TopWrap from './styled/TopWrap';
 import InfoWrap from './styled/InfoWrap';
 import SkillsWrap from './styled/SkillsWrap';
+import Div from './styled/WrapEduAndExp';
+import TagList from '../common/TagList';
 
 const index = ({ getProfilebyId, profile, match, user }) => {
     useEffect(() => {
@@ -35,10 +37,14 @@ const index = ({ getProfilebyId, profile, match, user }) => {
                     </TopContainer>
                 </div>
             </TopWrap>
+            {profile.type === 'Company' ? (
+                <div></div>
+            ) : (
             <SkillsWrap>
                 <HeaderBio>Skills:</HeaderBio>
-                <Paragraph>{profile.skills}</Paragraph>
+                <TagList list={profile.skills.slice(0, 10)} />                
             </SkillsWrap>
+            )}
             <InfoWrap>
                 <HeaderBio>Details</HeaderBio>
                 <Paragraph>Status: {profile.status}</Paragraph>
@@ -47,28 +53,32 @@ const index = ({ getProfilebyId, profile, match, user }) => {
                     Website: <Link to={profile.website}>{profile.website}</Link>
                 </LinkWrap>
             </InfoWrap>
+            {profile.type === 'Company' ? (
+                <BottomContainer></BottomContainer>
+            ) : (
             <BottomContainer>
                 {profile.experience.length > 0 ? (
-                    <div>
+                    <Div>
                         <HeaderBio>Experience</HeaderBio>
                         {profile.experience.map(experience => (
                             <Experience key={experience._id} experience={experience} />
                         ))}
-                    </div>
+                    </Div>
                 ) : (
                         <HeaderBio>No experience</HeaderBio>
                     )}
                 {profile.education.length > 0 ? (
-                    <div>
+                    <Div>
                         <HeaderBio>Education</HeaderBio>
                         {profile.education.map(education => (
                             <Education key={education._id} education={education} />
                         ))}
-                    </div>
+                    </Div>
                 ) : (
                         <HeaderBio>No education</HeaderBio>
                     )}
             </BottomContainer>
+            ) }
         </Wrapper>
     )
 }
