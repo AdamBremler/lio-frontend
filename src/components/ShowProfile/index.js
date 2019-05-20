@@ -36,10 +36,14 @@ const index = ({ getProfilebyId, profile, match, user }) => {
                     </TopContainer>
                 </div>
             </TopWrap>
+            {profile.type === 'Company' ? (
+                <div></div>
+            ) : (
             <SkillsWrap>
                 <HeaderBio>Skills:</HeaderBio>
                 <Paragraph>{profile.skills}</Paragraph>
             </SkillsWrap>
+            )}
             <InfoWrap>
                 <HeaderBio>Details</HeaderBio>
                 <Paragraph>Status: {profile.status}</Paragraph>
@@ -48,6 +52,9 @@ const index = ({ getProfilebyId, profile, match, user }) => {
                     Website: <Link to={profile.website}>{profile.website}</Link>
                 </LinkWrap>
             </InfoWrap>
+            {profile.type === 'Company' ? (
+                <BottomContainer></BottomContainer>
+            ) : (
             <BottomContainer>
                 {profile.experience.length > 0 ? (
                     <Div>
@@ -70,6 +77,7 @@ const index = ({ getProfilebyId, profile, match, user }) => {
                         <HeaderBio>No education</HeaderBio>
                     )}
             </BottomContainer>
+            ) }
         </Wrapper>
     )
 }
