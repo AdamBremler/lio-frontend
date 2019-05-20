@@ -14,7 +14,8 @@ const DisplayExperience = ({ experience, deleteExp }) => {
             <Tr key={exp._id}>
                 <Th>{exp.company}</Th>
                 <Th>{exp.title}</Th>
-                <Th>{exp.from} - {exp.to}</Th>
+                <Th>{exp.from}</Th>
+                <Th>{exp.to}</Th>
                 <Th><DeleteBtn onClick={() => deleteExp(exp._id)}>Delete</DeleteBtn></Th>
             </Tr>
         )
@@ -27,8 +28,8 @@ const DisplayExperience = ({ experience, deleteExp }) => {
                     <tr>
                         <Th>Company</Th>
                         <Th>Title</Th>
-                        <Th>Years</Th>
-                        <Th></Th>
+                        <Th>Date from</Th>
+                        <Th>Date to</Th>
                     </tr>
                 </Thead>
                 <tbody>

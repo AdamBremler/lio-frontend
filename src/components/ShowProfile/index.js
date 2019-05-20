@@ -16,6 +16,7 @@ import LinkWrap from '../ShowProfile/styled/LinkWrap';
 import TopWrap from './styled/TopWrap';
 import InfoWrap from './styled/InfoWrap';
 import SkillsWrap from './styled/SkillsWrap';
+import Div from './styled/WrapEduAndExp';
 
 const index = ({ getProfilebyId, profile, match, user }) => {
     useEffect(() => {
@@ -49,22 +50,22 @@ const index = ({ getProfilebyId, profile, match, user }) => {
             </InfoWrap>
             <BottomContainer>
                 {profile.experience.length > 0 ? (
-                    <div>
+                    <Div>
                         <HeaderBio>Experience</HeaderBio>
                         {profile.experience.map(experience => (
                             <Experience key={experience._id} experience={experience} />
                         ))}
-                    </div>
+                    </Div>
                 ) : (
                         <HeaderBio>No experience</HeaderBio>
                     )}
                 {profile.education.length > 0 ? (
-                    <div>
+                    <Div>
                         <HeaderBio>Education</HeaderBio>
                         {profile.education.map(education => (
                             <Education key={education._id} education={education} />
                         ))}
-                    </div>
+                    </Div>
                 ) : (
                         <HeaderBio>No education</HeaderBio>
                     )}

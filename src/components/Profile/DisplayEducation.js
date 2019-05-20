@@ -15,7 +15,8 @@ const DisplayEducation = ({ education, deleteEducation }) => {
                 <Th>{i.school}</Th>
                 <Th>{i.field}</Th>
                 <Th>{i.degree}</Th>
-                <Th>{i.from} - {i.to}</Th>
+                <Th>{i.from}</Th>
+                <Th>{i.to}</Th>
                 <Th><DeleteBtn onClick={() => deleteEducation(i._id)}>Delete</DeleteBtn></Th>
             </Tr>
         )
@@ -29,8 +30,8 @@ const DisplayEducation = ({ education, deleteEducation }) => {
                         <Th>School</Th>
                         <Th>Program</Th>
                         <Th>Degree</Th>
-                        <Th>Years</Th>
-                        <Th></Th>
+                        <Th>Date from</Th>
+                        <Th>Date to</Th>
                     </tr>
                 </Thead>
                 <tbody>

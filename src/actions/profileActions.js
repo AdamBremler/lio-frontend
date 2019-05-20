@@ -37,6 +37,7 @@ export const saveProfile = (formData) => (dispatch, getState) => {
         })
         dispatch({ type: GET_PROFILE, payload: res.data.profile })
         dispatch(profileUpdated(formData));
+        console.log('Success when saving profile')
     } catch (error) {
         dispatch({ type: PROFILE_FAILURE, payload: { msg: error.response } })
         console.log('Error when saving profile')
