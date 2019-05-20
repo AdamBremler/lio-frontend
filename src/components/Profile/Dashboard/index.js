@@ -1,15 +1,8 @@
 import React, { useEffect, useState } from 'react'
-import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { getProfile, saveProfile } from '../../../actions/profileActions';
-
-const Div = styled.div`
-flex-grow: 1;
-`;
-const Input = styled.input`
-width: 40%;
-`
+import Div from '../styled/Div';
 
 const index = ({ getProfile, saveProfile, profile: { profile } }) => {
     const [formData, setFormData] = useState({
@@ -46,52 +39,46 @@ const index = ({ getProfile, saveProfile, profile: { profile } }) => {
                 <div>
                     <label>First name: </label>
                     <br />
-                    <Input type="text" name="firstname" placeholder="First name" value={firstname} onChange={e => onChange(e)} />
+                    <input type="text" name="firstname" placeholder="First name" value={firstname} onChange={e => onChange(e)} />
                 </div>
                 <div>
-                    <label>Last name: </label>
+                    <label>Surname: </label>
                     <br />
-                    <Input type="text" name="surname" placeholder="Last name" value={surname} onChange={e => onChange(e)} />
+                    <input type="text" name="surname" placeholder="Surname" value={surname} onChange={e => onChange(e)} />
+                </div>
+                <div>
+                    <label>Photo: </label>
+                    <br />
+                    <input type="text" name="picture" placeholder="Photo URL, e.g: wwww.imgur.com/picture" value={picture} onChange={e => onChange(e)} />
                 </div>
                 <div>
                     <label>Location: </label>
                     <br />
-                    <Input type="text" name="picture" placeholder="Photo URL, e.g: wwww.myphoto.com" value={picture} onChange={e => onChange(e)} />
-                </div>
-                <div>
-                    <label>Location: </label>
-                    <br />
-                    <Input type="text" name="location" placeholder="City" value={location} onChange={e => onChange(e)} />
+                    <input type="text" name="location" placeholder="Country / City" value={location} onChange={e => onChange(e)} />
                 </div>
 
                 <div>
                     <label>Description: </label>
                     <br />
-                    <Input type="text" name="description" placeholder="Some bio about yourself" value={description} onChange={e => onChange(e)} />
+                    <input type="text" name="description" placeholder="Some bio about yourself" value={description} onChange={e => onChange(e)} />
                 </div>
 
                 <div>
                     <label>Status: </label>
                     <br />
-                    <Input type="text" name="status" placeholder="Current status" value={status} onChange={e => onChange(e)} />
-                </div>
-
-                <div>
-                    <label>Type: </label>
-                    <br />
-                    <Input type="text" name="type" placeholder="Are you a student or looking for a job?" value={type} onChange={e => onChange(e)} />
+                    <input type="text" name="status" placeholder="Current status" value={status} onChange={e => onChange(e)} />
                 </div>
 
                 <div>
                     <label>Skills: </label>
                     <br />
-                    <Input type="text" name="skills" placeholder="Main skills e.g: Developer, Javascript, Frontend.." value={skills} onChange={e => onChange(e)} />
+                    <input type="text" name="skills" placeholder="Main skills e.g: Developer, Javascript, Frontend.." value={skills} onChange={e => onChange(e)} />
                 </div>
 
                 <div>
                     <label>Website: </label>
                     <br />
-                    <Input type="text" name="website" placeholder="Website, linkedin etc" value={website} onChange={e => onChange(e)} />
+                    <input type="text" name="website" placeholder="Website, linkedin etc" value={website} onChange={e => onChange(e)} />
                 </div>
                 <button type="submit">Save Changes</button>
                 <Link to="/profile">Back to profile</Link>
