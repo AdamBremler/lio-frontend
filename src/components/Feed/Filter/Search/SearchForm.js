@@ -10,7 +10,7 @@ import SearchInputWrapper from './styled/SearchInputWrapper';
 import Options from './Options';
 import CheckboxDropdown from './CheckboxDropdown';
 
-function SearchForm({ handleSubmit, pristine, reset, submitting, filterButtonValue, initialValues, feed, getFeed, submitFeedForm }) {
+function SearchForm({ handleSubmit, pristine, reset, submitting, filterButtonValue, initialValues, feed, user, getFeed, submitFeedForm }) {
     useEffect(() => {
         if (!feed) getFeed(initialValues);
     }, []);
@@ -23,7 +23,7 @@ function SearchForm({ handleSubmit, pristine, reset, submitting, filterButtonVal
                 </SearchInputWrapper>
                 <SearchButton><img src={searchIcon} /></SearchButton>
                 <Options submitFeedForm={submitFeedForm} filterButtonValue={filterButtonValue} />
-                <CheckboxDropdown filterButtonValue={filterButtonValue} />
+                <CheckboxDropdown filterButtonValue={filterButtonValue} user={user} />
             </SearchFormWrapper>
         </form>
     )
@@ -42,7 +42,8 @@ const mapStateToProps = state => ({
         inclCompanies: !state.user.user || state.user.user.type === 'Student',
         inclAds: !state.user.user || state.user.user.type === 'Student',
     },
-    feed: state.feed.feed
+    feed: state.feed.feed,
+    user: state.user.user
 });
 
 const mapDispatchToProps = dispatch => ({
