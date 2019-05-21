@@ -5,7 +5,7 @@ import Search from './Search';
 export default function index({ user, getFeed }) {
     return (
         <FilterWrapper>
-            <Search getFeed={getFeed} />
+            <Search getFeed={getFeed} user={user} />
         </FilterWrapper>
     );
 }
