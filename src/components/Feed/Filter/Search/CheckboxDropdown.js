@@ -9,5 +9,5 @@ export default function CheckboxDropdown({ filterButtonValue, dispatch }) {
             { name: 'inclCompanies', label: 'Include Companies' },
             { name: 'inclAds', label: 'Include Advertisements' }
         ]} />
-    )
+    );
 }

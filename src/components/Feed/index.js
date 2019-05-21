@@ -16,11 +16,7 @@ import TopBarWrapper from './styled/TopBarWrapper';
 import CreateAdLink from './styled/CreateAdLink';
 import createAdIcon from './img/createAd.svg';
 
-function index({ feed, isLoading, error, user, pagination, getFeed, postAd }) {
-    useEffect(() => {
-        if (!feed) getFeed();
-    }, []);
-
+function index({ feed, isLoading, error, user, pagination, getFeed }) {
     const feedList = feed && pagination ? feed.slice(
         (pagination.current - 1) * pagination.pageSize,
         (pagination.current - 1) * pagination.pageSize + pagination.pageSize
@@ -61,7 +57,7 @@ function index({ feed, isLoading, error, user, pagination, getFeed, postAd }) {
             {feedList}
             {feed ? <Pagination total={feed.length} name='feed' /> : null}
         </PageWrapper>
-    )
+    );
 }
 
 const mapStateToProps = state => ({
