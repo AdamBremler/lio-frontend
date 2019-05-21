@@ -5,7 +5,7 @@ import SearchForm from './SearchForm';
 export default function index({ getFeed }) {
     return (
         <div>
-            <SearchForm onSubmit={normalize(getFeed)} />
+            <SearchForm onSubmit={({ filterButton, ...values }) => normalize(getFeed)(values)} />
         </div>
     );
 }
