@@ -32,19 +32,17 @@ const index = ({ getProfilebyId, profile, match, user }) => {
                         <Picture src={profile.picture} alt={profile.firstname}></Picture>
                     </ImgWrap>
                     <TopContainer>
-                        <HeaderBio>About {profile.firstname}:</HeaderBio>
+                        <HeaderBio>About {profile.firstname || profile.name}:</HeaderBio>
                         <Paragraph>{profile.description}</Paragraph>
                     </TopContainer>
                 </div>
             </TopWrap>
-            {profile.type === 'Company' ? (
-                <div></div>
-            ) : (
-            <SkillsWrap>
-                <HeaderBio>Skills:</HeaderBio>
-                <TagList list={profile.skills.slice(0, 10)} />                
-            </SkillsWrap>
-            )}
+            {profile.skills ? (
+                <SkillsWrap>
+                    <HeaderBio>Skills:</HeaderBio>
+                    <TagList list={profile.skills.slice(0, 10)} />
+                </SkillsWrap>
+            ) : null}
             <InfoWrap>
                 <HeaderBio>Details</HeaderBio>
                 <Paragraph>Status: {profile.status}</Paragraph>
@@ -56,29 +54,29 @@ const index = ({ getProfilebyId, profile, match, user }) => {
             {profile.type === 'Company' ? (
                 <BottomContainer></BottomContainer>
             ) : (
-            <BottomContainer>
-                {profile.experience.length > 0 ? (
-                    <Div>
-                        <HeaderBio>Experience</HeaderBio>
-                        {profile.experience.map(experience => (
-                            <Experience key={experience._id} experience={experience} />
-                        ))}
-                    </Div>
-                ) : (
-                        <HeaderBio>No experience</HeaderBio>
-                    )}
-                {profile.education.length > 0 ? (
-                    <Div>
-                        <HeaderBio>Education</HeaderBio>
-                        {profile.education.map(education => (
-                            <Education key={education._id} education={education} />
-                        ))}
-                    </Div>
-                ) : (
-                        <HeaderBio>No education</HeaderBio>
-                    )}
-            </BottomContainer>
-            ) }
+                    <BottomContainer>
+                        {profile.experience && profile.experience.length > 0 ? (
+                            <Div>
+                                <HeaderBio>Experience</HeaderBio>
+                                {profile.experience.map(experience => (
+                                    <Experience key={experience._id} experience={experience} />
+                                ))}
+                            </Div>
+                        ) : (
+                                <HeaderBio>No experience</HeaderBio>
+                            )}
+                        {profile.education && profile.education.length > 0 ? (
+                            <Div>
+                                <HeaderBio>Education</HeaderBio>
+                                {profile.education.map(education => (
+                                    <Education key={education._id} education={education} />
+                                ))}
+                            </Div>
+                        ) : (
+                                <HeaderBio>No education</HeaderBio>
+                            )}
+                    </BottomContainer>
+                )}
         </Wrapper>
     )
 }
