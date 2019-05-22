@@ -7,7 +7,7 @@ Frontend for Lio. Running on React.
 Make sure you have [Node.js](http://nodejs.org/) installed.
 
 ```sh
-git clone https://github.com/AdamBremler/lio-frontend.git# or clone your own fork
+git clone https://github.com/AdamBremler/lio-frontend.git
 cd lio-frontend
 npm install
 npm start
