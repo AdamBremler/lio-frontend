@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
+import { isEmpty } from 'lodash';
 import { getProfile } from '../../actions/profileActions';
 import Div from './styled/Div';
 import Header from './styled/Header';
@@ -18,7 +19,7 @@ const index = ({ getProfile, user, profile }) => {
     }, [])
     return (
         <Div>
-            {profile !== '' ? (
+            {profile !== '' && !isEmpty(profile) ? (
                 <Div>
                     <Header>
                         Welcome {profile.firstname}!
@@ -29,39 +30,39 @@ const index = ({ getProfile, user, profile }) => {
                     <TextWrapper>
                         Here you can edit and add information to your profile.
                         </TextWrapper>
-                        {profile.type === 'Company' ? (
-                <LinkWrapper>
-                        <Link to="/dashboard">
-                            <Button>Edit Profile</Button>
-                        </Link>
-                        <Link to={`/profile/${profile._id}`}>
-                            <Button>View profile</Button>
-                        </Link>
-                    </LinkWrapper>
-                        ) : (
+                    {profile.type === 'Company' ? (
+                        <LinkWrapper>
+                            <Link to="/dashboard">
+                                <Button>Edit Profile</Button>
+                            </Link>
+                            <Link to={`/profile/${profile._id}`}>
+                                <Button>View profile</Button>
+                            </Link>
+                        </LinkWrapper>
+                    ) : (
                             <LinkWrapper>
-                        <Link to="/dashboard">
-                            <Button>Edit Profile</Button>
-                        </Link>
-                        <Link to="/education">
-                            <Button>Add education</Button>
-                        </Link>
-                        <Link to="/experience">
-                            <Button>Add experience</Button>
-                        </Link>
-                        <Link to={`/profile/${profile._id}`}>
-                            <Button>View profile</Button>
-                        </Link>
-                    </LinkWrapper>
+                                <Link to="/dashboard">
+                                    <Button>Edit Profile</Button>
+                                </Link>
+                                <Link to="/education">
+                                    <Button>Add education</Button>
+                                </Link>
+                                <Link to="/experience">
+                                    <Button>Add experience</Button>
+                                </Link>
+                                <Link to={`/profile/${profile._id}`}>
+                                    <Button>View profile</Button>
+                                </Link>
+                            </LinkWrapper>
                         )}
 
-                        {profile.type === 'Company' ? (
-                            <div></div>
-                        ) : (
+                    {profile.type === 'Company' ? (
+                        <div></div>
+                    ) : (
                             <div>
-                        <DisplayExperience experience={profile.experience} />
-                        <DisplayEducation education={profile.education} />
-                    </div>
+                                <DisplayExperience experience={profile.experience} />
+                                <DisplayEducation education={profile.education} />
+                            </div>
                         )}
                 </Div>
             ) : (

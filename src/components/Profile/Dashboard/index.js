@@ -1,22 +1,31 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import PageWrapper from '../../common/PageWrapper';
-import { saveProfile } from '../../../actions/profileActions';
+import { getProfile, saveProfile } from '../../../actions/profileActions';
 import EditProfileForm from './EditProfileForm';
 
-function index({ saveProfile }) {
+function index({ profile, getProfile, saveProfile }) {
+    useEffect(() => {
+        getProfile();
+    }, []);
+
     return (
         <PageWrapper>
-            <EditProfileForm onSubmit={saveProfile} />
+            <EditProfileForm initialValues={profile} onSubmit={saveProfile} />
         </PageWrapper>
     );
 }
 
+const mapStateToProps = state => ({
+    profile: state.profile.profile,
+});
+
 const mapDispatchToProps = dispatch => ({
-    saveProfile: () => dispatch(saveProfile())
+    getProfile: () => dispatch(getProfile()),
+    saveProfile: profile => dispatch(saveProfile(profile))
 });
 
 export default connect(
-    null,
+    mapStateToProps,
     mapDispatchToProps
 )(index);

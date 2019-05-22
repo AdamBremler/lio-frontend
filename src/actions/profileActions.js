@@ -1,10 +1,11 @@
 import { GET_PROFILE, PROFILE_FAILURE, UPDATE_PROFILE, ADD_EDUCATION, ADD_EXPERIENCE } from '../constants/actionTypes';
-import Axios from 'axios';
+import Axios from '../helpers/lioAxiosInstance';
+import { replace } from 'connected-react-router';
 
 //Get profile by ID(use this one to display other members profile)
 export const getProfilebyId = (id) => async (dispatch, getState) => {
     try {
-        const res = await Axios.get(`${process.env.REACT_APP_API_URL}/profile/user/${id}`, {
+        const res = await Axios.get(`/profile/user/${id}`, {
             headers: {
                 'Authorization': `Bearer ${getState().user.token}`
             }
@@ -17,7 +18,7 @@ export const getProfilebyId = (id) => async (dispatch, getState) => {
 //Get profile on the logged in user
 export const getProfile = () => async (dispatch, getState) => {
     try {
-        const res = await Axios.get(`${process.env.REACT_APP_API_URL}/profile/user`, {
+        const res = await Axios.get(`/profile/user`, {
             headers: {
                 'Authorization': `Bearer ${getState().user.token}`
             }
@@ -28,15 +29,15 @@ export const getProfile = () => async (dispatch, getState) => {
     }
 }
 
-export const saveProfile = (formData) => (dispatch, getState) => {
+export const saveProfile = (formData) => async (dispatch, getState) => {
     try {
-        const res = Axios.post(`${process.env.REACT_APP_API_URL}/profile`, formData, {
+        const { data } = await Axios.post(`/profile`, formData, {
             headers: {
                 'Authorization': `Bearer ${getState().user.token}`
             }
         })
-        dispatch({ type: GET_PROFILE, payload: res.data.profile })
-        dispatch(profileUpdated(formData));
+        dispatch(profileUpdated(data));
+        dispatch(replace(`/profile/${data._id}`));
         console.log('Success when saving profile')
     } catch (error) {
         dispatch({ type: PROFILE_FAILURE, payload: { msg: error.response } })
@@ -46,7 +47,7 @@ export const saveProfile = (formData) => (dispatch, getState) => {
 
 export const saveEducation = (formData) => async (dispatch, getState) => {
     try {
-        const res = await Axios.put(`${process.env.REACT_APP_API_URL}/profile/education`, formData, {
+        const res = await Axios.put(`/profile/education`, formData, {
             headers: {
                 'Authorization': `Bearer ${getState().user.token}`
             }
@@ -60,7 +61,7 @@ export const saveEducation = (formData) => async (dispatch, getState) => {
 
 export const saveExperience = (formData) => async (dispatch, getState) => {
     try {
-        const res = await Axios.put(`${process.env.REACT_APP_API_URL}/profile/experience`, formData, {
+        const res = await Axios.put(`/profile/experience`, formData, {
             headers: {
                 'Authorization': `Bearer ${getState().user.token}`
             }
@@ -75,7 +76,7 @@ export const saveExperience = (formData) => async (dispatch, getState) => {
 
 export const deleteExp = id => async (dispatch, getState) => {
     try {
-        const res = await Axios.delete(`${process.env.REACT_APP_API_URL}/profile/experience/${id}`, {
+        const res = await Axios.delete(`/profile/experience/${id}`, {
             headers: {
                 'Authorization': `Bearer ${getState().user.token}`
             }
@@ -90,7 +91,7 @@ export const deleteExp = id => async (dispatch, getState) => {
 
 export const deleteEducation = id => async (dispatch, getState) => {
     try {
-        const res = await Axios.delete(`${process.env.REACT_APP_API_URL}/profile/education/${id}`, {
+        const res = await Axios.delete(`/profile/education/${id}`, {
             headers: {
                 'Authorization': `Bearer ${getState().user.token}`
             }
