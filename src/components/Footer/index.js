@@ -10,7 +10,7 @@ export default function index() {
         <FooterWrapper>
             <Footer>
                 <StyledLinkLogo src={Logo}></StyledLinkLogo>
-                <p>@Copyright  © 2019 LIO</p>
+                <p>Copyright © 2019 LIO</p>
             </Footer>
         </FooterWrapper>
     )
