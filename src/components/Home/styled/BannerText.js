@@ -16,5 +16,4 @@ export default styled.div`
         padding-top: 200px;  
         text-align: center; 
     }
-    
 `;
