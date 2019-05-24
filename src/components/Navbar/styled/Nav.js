@@ -5,4 +5,8 @@ export default styled.nav`
     margin: auto;
     display: flex;
     justify-content: space-between;
+    @media (max-width: 500px) {
+        width: 100%;
+        justify-content: space-evenly;
+    }
 `

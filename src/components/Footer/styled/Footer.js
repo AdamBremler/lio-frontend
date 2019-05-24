@@ -6,4 +6,8 @@ export default styled.div`
     width: 60%;
     margin: auto;
     padding: 20px;
+    @media (max-width: 500px) {
+        width: 100%;
+        padding: 0px;
+    }
 `;

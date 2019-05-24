@@ -13,4 +13,8 @@ export default styled.button`
     &:hover {
         background-color: #00689A;
     }
+    @media (max-width: 500px) {
+        padding: 15px 25px;
+        font-size: 16px;   
+    }
 `;
