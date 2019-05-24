@@ -3,6 +3,7 @@ import Footer from './styled/Footer'
 import FooterWrapper from './styled/FooterWrapper';
 import StyledLinkLogo from '../Navbar/styled/StyledLinkLogo';
 import Logo from '../Navbar/styled/logo.png';
+import P from './styled/P';
 
 export default function index() {
 
@@ -10,7 +11,7 @@ export default function index() {
         <FooterWrapper>
             <Footer>
                 <StyledLinkLogo src={Logo}></StyledLinkLogo>
-                <p>Copyright © 2019 LIO</p>
+                <P>Copyright © 2019 Lio</P>
             </Footer>
         </FooterWrapper>
     )
