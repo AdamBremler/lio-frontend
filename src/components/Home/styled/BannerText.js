@@ -11,9 +11,10 @@ export default styled.div`
         padding-top: 150px;  
         text-align: center; 
     }
-    @media (max-width: 1024px) {
+    @media only screen and (max-device-width: 1024px) and (min-device-width: 768px) {
         width: 60%;
         padding-top: 200px;  
         text-align: center; 
     }
+    
 `;
