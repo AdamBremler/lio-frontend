@@ -15,4 +15,7 @@ export default styled.button`
         border-color: #dc0a0a;
         margin: 1px
     }
+    @media (max-width: 500px) {
+        padding: 5px 5px;
+    }
 `;

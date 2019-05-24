@@ -15,4 +15,11 @@ export default styled.button`
         border-color: ##2098DF;
         margin: 4px
     }
+    @media (max-width: 500px) {
+        padding: 5px 10px;
+        font-size: 12px;
+    }
+    @media only screen and (max-device-width: 1024px) and (min-device-width: 768px) {
+       
+    }
 `;
