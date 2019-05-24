@@ -9,4 +9,7 @@ export default styled.nav`
         width: 100%;
         justify-content: space-evenly;
     }
+    @media only screen and (max-device-width: 1024px) and (min-device-width: 768px) {
+        width: 95%;
+    }
 `

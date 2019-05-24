@@ -7,4 +7,8 @@ export default styled.div`
     padding-left: 16px;
     margin-bottom: 20px;
     border-radius: 10px;
+    @media (max-width: 500px) {
+        width: 100%;
+        padding: 0px;
+    }
 `;

@@ -19,7 +19,4 @@ export default styled.button`
         padding: 5px 10px;
         font-size: 12px;
     }
-    @media only screen and (max-device-width: 1024px) and (min-device-width: 768px) {
-       
-    }
 `;

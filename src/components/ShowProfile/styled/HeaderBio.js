@@ -6,4 +6,7 @@ export default styled.h4`
     padding-top: 20px;
     padding-bottom: 5px;
     padding-left: 6px;
+    @media (max-width: 500px) {
+        padding-top: 10px;
+    }
 `;
