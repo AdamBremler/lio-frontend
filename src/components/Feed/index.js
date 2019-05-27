@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import { getFeed } from '../../actions/feedActions';
 import FeedCard from './styled/FeedCard';
@@ -51,7 +51,7 @@ function index({ feed, isLoading, error, user, pagination, getFeed }) {
     return (
         <PageWrapper>
             <TopBarWrapper>
-                {user && user.type === 'Company' ? <CreateAdLink to='/ads/new' title='Create ad'><img src={createAdIcon} /></CreateAdLink> : null}
+                {user && user.type === 'Company' ? <CreateAdLink to='/ads/new' title='Create ad'><img src={createAdIcon} alt="createAd" /></CreateAdLink> : null}
                 <Filter user={user} getFeed={getFeed} />
             </TopBarWrapper>
             {feedList}
