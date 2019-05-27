@@ -3,7 +3,6 @@ import { Field, reduxForm } from 'redux-form';
 import industries from '../../../constants/industries';
 import InputField from '../../common/InputField';
 import TextareaField from '../../common/TextareaField';
-import DateTimePicker from '../../common/DateTimePicker';
 import AdFormCard from '../../Ad/styled/AdCard';
 import Button from '../../common/Button';
 import { Link } from 'react-router-dom';

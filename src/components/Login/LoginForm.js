@@ -23,11 +23,6 @@ const Form = styled.form`
     }
 `;
 
-const Div = styled.div`
-    margin-bottom: 20px;
-`;
-
-
 const validate = values => {
     const errors = {};
 

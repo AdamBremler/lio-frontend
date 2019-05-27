@@ -7,7 +7,7 @@ import { setCurrentPage } from '../../../actions/paginationActions';
 
 function index({ name, pagination, handleChange, current, pageSize, ...props }) {
     useEffect(() => {
-        if (pagination[name] == undefined) {
+        if (pagination[name] === undefined) {
             handleChange(name, current || pagination.default.current, pageSize || pagination.default.pageSize);
         }
     }, []);

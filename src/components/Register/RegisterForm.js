@@ -52,6 +52,7 @@ const validate = values => {
             case 'Company':
                 if (!values.name || !/\S/.test(values.name)) errors.name = 'Required';
                 break;
+                default: 
         }
     }
 
