@@ -38,10 +38,8 @@ export const saveProfile = (formData) => async (dispatch, getState) => {
         })
         dispatch(profileUpdated(data));
         dispatch(replace(`/profile/${data._id}`));
-        console.log('Success when saving profile')
     } catch (error) {
         dispatch({ type: PROFILE_FAILURE, payload: { msg: error.response } })
-        console.log('Error when saving profile')
     }
 }
 
@@ -55,7 +53,6 @@ export const saveEducation = (formData) => async (dispatch, getState) => {
         dispatch({ type: ADD_EDUCATION, payload: res.data })
     } catch (error) {
         dispatch({ type: PROFILE_FAILURE, payload: { msg: error.response } })
-        console.log('Error when saving experience')
     }
 }
 
@@ -70,7 +67,6 @@ export const saveExperience = (formData) => async (dispatch, getState) => {
 
     } catch (error) {
         dispatch({ type: PROFILE_FAILURE, payload: { msg: error.response } })
-        console.log('Error when saving experience')
     }
 }
 
@@ -85,7 +81,6 @@ export const deleteExp = id => async (dispatch, getState) => {
         dispatch({ payload: res.data, type: UPDATE_PROFILE })
     } catch (error) {
         dispatch({ type: PROFILE_FAILURE, payload: { msg: error.response } })
-        console.log('Error when deleting experience')
     }
 }
 
@@ -100,7 +95,6 @@ export const deleteEducation = id => async (dispatch, getState) => {
         dispatch({ payload: res.data, type: UPDATE_PROFILE })
     } catch (error) {
         dispatch({ type: PROFILE_FAILURE, payload: { msg: error.response } })
-        console.log('Error when deleting education')
     }
 }
 

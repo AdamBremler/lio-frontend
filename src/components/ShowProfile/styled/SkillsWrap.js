@@ -8,4 +8,8 @@ export default styled.div`
     margin-right: 20px;
     margin-bottom: 20px;
     border-radius: 10px;
+    @media (max-width: 500px) {
+        margin-bottom: 10px;
+        padding-left: 6px;
+    }
 `;

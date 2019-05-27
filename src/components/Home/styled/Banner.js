@@ -8,4 +8,7 @@ export default styled.div`
     background-repeat: no-repeat;
     background-size: cover;
     background-position: top;
+    @media (max-width: 500px) {
+        height: 650px;
+    }
 `;
