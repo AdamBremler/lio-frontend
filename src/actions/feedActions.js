@@ -7,7 +7,7 @@ export const getFeed = params => async (dispatch, getState) => {
     try {
         const { data } = await axios.get('/feed', {
             headers: {
-                'Authorization': `Bearer ${getState().user.token}`
+                'Authorization': `Bearer ${getState().user && getState().user.token}`
             },
             params
         });
@@ -18,16 +18,16 @@ export const getFeed = params => async (dispatch, getState) => {
     }
 }
 
-const getFeedRequest = () => ({
+export const getFeedRequest = () => ({
     type: GET_FEED_REQUEST
 });
 
-const getFeedSuccess = feed => ({
+export const getFeedSuccess = feed => ({
     type: GET_FEED_SUCCESS,
     payload: { feed }
 });
 
-const getFeedFailure = error => ({
+export const getFeedFailure = error => ({
     type: GET_FEED_FAILURE,
     payload: { error }
 });
