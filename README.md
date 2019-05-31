@@ -1,6 +1,8 @@
 # Lio-Frontend
 
 Frontend for Lio. Running on React.
+Deployed: https://app-lio.herokuapp.com/
+More info at trello with documentation, postman tests etc: https://trello.com/b/5a6qRY7M/lio
 
 ## Running Locally
 
