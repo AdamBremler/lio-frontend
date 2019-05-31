@@ -21,7 +21,7 @@ function SearchForm({ handleSubmit, pristine, reset, submitting, filterButtonVal
                 <SearchInputWrapper>
                     <Field name='query' component={SearchInput} type='text' label='Search' />
                 </SearchInputWrapper>
-                <SearchButton><img src={searchIcon} alt="search" /></SearchButton>
+                <SearchButton title='Search'><img src={searchIcon} alt="search" /></SearchButton>
                 <Options submitFeedForm={submitFeedForm} filterButtonValue={filterButtonValue} />
                 <CheckboxDropdown filterButtonValue={filterButtonValue} user={user} />
             </SearchFormWrapper>
